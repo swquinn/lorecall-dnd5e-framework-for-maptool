@@ -1,0 +1,13 @@
+{
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "[css]": {
+      "editor.tabSize": 2
+    },
+    "editor.renderWhitespace": "all",
+    "files.exclude": {
+      "**/.git": true,
+      "**/.history": true,
+      "**/.DS_Store": true
+    },
+}
