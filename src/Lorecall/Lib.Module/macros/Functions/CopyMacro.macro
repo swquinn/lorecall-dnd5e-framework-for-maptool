@@ -1,0 +1,27 @@
+[h:macroIndex=arg(0)]
+[h:source=arg(1)]
+[h:target=arg(2)]
+[h:macroGroup=arg(3)]
+
+[h:sourceMap=getTokenMap(source)]
+[h:macroToCopy=getMacroProps(macroIndex, "json", source, sourceMap)]
+[if(json.isEmpty(macroToCopy)==0), CODE: {
+  [h:macroLabel=json.get(macroToCopy, "label")]
+
+  [h:targetHasMacro=hasMacro(macroLabel, findToken(target))]
+  [h:assert(targetHasMacro==0, strformat("The token: %{target} already has a macro with the label: %{macroLabel}. Aborting copy.", 1))]
+
+  [h,if(macroGroup==""): macroGroup=json.get(macroToCopy, "group")]
+
+  [h:macroCommand=json.get(macroToCopy, "command")]
+  [h:sortOrder=json.get(macroToCopy, "sortBy")]
+
+  [h:macroProps=""]
+  [h:macroProps=setStrProp(macroProps, "group", macroGroup)]
+  [h:macroProps=setStrProp(macroProps, "sortBy", sortOrder)]
+  [h,token(target): createMacro(
+    macroLabel,
+    macroCommand,
+    macroProps
+  )]
+};{}]

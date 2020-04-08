@@ -1,0 +1,12 @@
+[h:setCurrentMap("00.Loading")]
+
+[h:link=macroLinkText("deferredCalls@"+getMacroLocation())]
+[h:execLink(link,1)]
+
+[h: defineFunction("core.copyMacro", "CopyMacro@Lib:Module")]
+[h: defineFunction("core.strsplit", "StringSplit@Lib:Module")]
+
+[h:execLink(macroLinkText("OnLoad@Lib:Character"),1)]
+[h:execLink(macroLinkText("OnLoad@Lib:Data"),1)]
+[h:execLink(macroLinkText("OnLoad@Lib:Rules"),1)]
+[h:execLink(macroLinkText("OnLoad@Lib:Icons"),1)]

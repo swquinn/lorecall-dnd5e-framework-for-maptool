@@ -1,0 +1,15 @@
+[h:text=arg(0)]
+[h:split=arg(1)]
+
+[h:regex=strformat("(.*)" + split + "(.*)")]
+[h:id=strfind(text, regex)]
+[h:assert(getFindCount(id)==1, strformat(
+  "Too many matches to perform a simple string split on: " +
+  "`%{text}` using the regex: %{regex}"
+))]
+
+[h:splitText=json.set("",
+  "left", getGroup(id, 1, 1),
+  "right", getGroup(id, 1, 2)
+)]
+[h:macro.return=splitText]

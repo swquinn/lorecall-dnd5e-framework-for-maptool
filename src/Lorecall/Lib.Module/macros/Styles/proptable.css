@@ -1,0 +1,45 @@
+/* proptable.css */
+table { width: 100% }
+table td {
+  font-size: 11pt;
+  font-family: sans-serif;
+}
+table.prop-table a,
+table.prop-table a:active,
+table.prop-table a:hover,
+table.prop-table a:visited {
+  color: #000000;
+}
+
+table.prop-table { background-color: #ffffff; }
+table.prop-table tr.prop-table-header { background-color: #666666; color: #aaaaaa; }
+table.prop-table tr td.empty-property { text-align: center; font-style: italic; }
+table.prop-table tr.even { background-color: #dfdfdf; }
+table.prop-table tr.odd { background-color: #ffffff; }
+
+table.prop-table th,
+table.prop-table td {
+  padding: 5px;
+  text-align: left;
+}
+table.prop-table th.label { text-align: left; }
+
+table td.edit,
+table td.edit a {
+  border: 0px solid #000000;
+  width: 30px;
+  font-family: sans-serif;
+  text-decoration: none;
+}
+
+table.metadata {
+  border: 0px;
+}
+
+
+table.metadata td {
+  border: 0px;
+  font-size: 12pt;
+  font-family: sans-serif;
+  text-align: left;
+}

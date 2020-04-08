@@ -1,0 +1,683 @@
+.clearfix:after {
+  content: "";
+  display: inline-block;
+  clear: both;
+}
+
+.btn-primary {
+  box-shadow:inset 0px 34px 0px -15px #b54b3a;
+  background-color:#a73f2d;
+  border:1px solid #241d13;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:12px;
+  font-weight:bold;
+  padding:9px 23px;
+  text-decoration:none;
+  text-shadow:0px -1px 0px #7a2a1d;
+}
+.btn-primary:hover {
+  background-color:#b34332;
+}
+.btn-primary:active {
+  position:relative;
+  top:1px;
+}
+
+.token-property-container {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.token-property {}
+
+body.character-sheet {
+  background-color: #ffffff;
+}
+body.character-sheet header {
+  background-color: #eee;
+  margin-bottom: 10px;
+  padding: 0px;
+
+  display: flex;
+  align-items: stretch;
+  align-content: stretch;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+body.character-sheet header .icon { width: 1rem; }
+
+body.character-sheet h1 {
+  font-size: 1.25rem;
+  display: inline-block;
+  padding: 5px;
+}
+body.character-sheet nav {
+  display: flex;
+  line-height: 2rem;
+}
+body.character-sheet nav .header-tab {
+  background-color:#a73f2d;
+  cursor:pointer;
+  color:#ffffff;
+  line-height: 2rem;
+  padding: 0 .25rem;
+}
+body.character-sheet nav .header-tab.hidden { display: none; }
+body.character-sheet nav .header-tab .icon {
+  display: inline-block;
+  margin: auto;
+  line-height: 2rem;
+  top: 7px;
+}
+body.character-sheet nav .header-tab:hover {
+  background-color:#b34332;
+}
+body.character-sheet nav .header-tab.active {
+  background-color: #666;
+}
+
+
+body.character-sheet label,
+body.character-sheet label * {
+  color: #000;
+  font-size: 0.55rem;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+
+main {
+  margin: 0px auto;
+  min-width: 715px;
+  max-width: 715px;
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "cs-header"
+    "cs-body";
+}
+
+section.cs-header {
+  grid-area: cs-header;
+
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "cs-name  cs-details";
+}
+
+section.cs-body {
+  grid-area: cs-body;
+  margin-top: 10px;
+
+  display: grid;
+  align-items: start;
+  grid-column-gap: 0.25rem;
+  grid-row-gap: 0.4rem;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 25px 275px auto;
+  grid-template-areas: 
+    "cs-abilities     cs-combat    cs-inspiration"
+    "cs-abilities     cs-combat    cs-personality"
+    "cs-abilities     cs-combat    cs-features"
+    "cs-proficiencies cs-equipment cs-features";
+}
+
+section.cs-abilities {
+  grid-area: cs-abilities;
+  align-self: stretch;
+  
+  display: grid;
+  align-items: stretch;
+  grid-row-gap: 0.4rem;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "cs-stats              cs-saving-throws"
+    "cs-stats              cs-skills"
+    "cs-proficiency-bonus  cs-proficiency-bonus"
+    "cs-passive-perception cs-passive-perception";
+}
+
+section.cs-armor-class {
+  grid-area: cs-armor-class;
+
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: center;
+}
+section.cs-armor-class .edit-ac {
+  position: relative;
+  display: block;
+  float: right;
+
+  margin: -5px 0px 0px auto;
+  padding: 0px;
+  top: 5px;
+  right: 2px;
+}
+section.cs-armor-class .token-property {
+  font-size: 1.25rem;
+  flex: 1 0 auto;
+
+  margin-top: 5px;
+  text-align: center;
+}
+section.cs-armor-class label { text-align: center; }
+
+section.cs-attacks {
+  grid-area: cs-attacks;
+
+  align-self: stretch;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: center;
+}
+section.cs-attacks .attacks {
+  flex: 1 0 auto;
+  margin: 2px;
+}
+section.cs-attacks .attacks table {
+  table-layout: fixed;
+  width: 100%;
+
+  border-collapse: separate;
+  border-spacing: 0.15rem;
+}
+section.cs-attacks .attacks table col.name-column { width: 8em; }
+section.cs-attacks .attacks table col.attack-mod-column { width: 3em; }
+section.cs-attacks .attacks table col.damage-column { }
+section.cs-attacks .attacks table col.action-column { width: 0.65rem; }
+section.cs-attacks .attacks table th, 
+section.cs-attacks .attacks table td {
+  text-align: left;
+}
+section.cs-attacks .attacks table th {
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  font-weight: bold;
+}
+section.cs-attacks .attacks table td {
+  background-color: #e6e6e6; 
+  line-height: 0.85rem;
+}
+section.cs-attacks .attacks table td * { font-size: 0.6rem; }
+section.cs-attacks .attacks table td.name-column {
+  padding-left: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+section.cs-attacks .attacks table td.attack-mod-column {
+  width: 1em;
+  text-align: center;
+}
+section.cs-attacks .attacks table td.damage-column {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+section.cs-attacks .attacks table td.action-column {
+  background-color: transparent;
+  text-align: center;
+  vertical-align: top;
+}
+section.cs-attacks .attacks table td.action-column .action {
+  color: #000;
+  cursor: pointer;
+}
+section.cs-attacks label { text-align: center; }
+
+
+
+section.cs-combat {
+  grid-area: cs-combat;
+
+  align-self: stretch;
+  display: grid;
+  grid-column-gap: 0.25rem;
+  grid-row-gap: 0.25rem;
+  grid-template-columns: 33% auto;
+  grid-template-rows: 45px 90px 45px auto;
+  grid-template-areas: 
+    "cs-armor-class  cs-initiative  cs-speed"
+    "cs-hitpoints    cs-hitpoints   cs-hitpoints"
+    "cs-hit-dice     cs-death-saves cs-death-saves"
+    "cs-attacks      cs-attacks     cs-attacks";
+}
+
+section.cs-death-saves {
+  grid-area: cs-death-saves;
+
+  justify-self: stretch;
+  padding: 0px 15px;
+  margin-top: 5px;
+}
+section.cs-death-saves .successes,
+section.cs-death-saves .failures {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  align-items: center;
+  line-height: 1.15rem;
+}
+section.cs-death-saves label { flex: 1 0 auto; margin-top: 1px; }
+section.cs-death-saves .death-save-marks {
+  display: inline-block;
+  align-self: stretch;
+  margin-right: 0px;
+}
+section.cs-death-saves .death-save-marks .icon {
+  display: inline-block;
+  top: 0px;
+  margin: auto;
+  vertical-align: middle;
+}
+
+section.cs-details {
+  grid-area: cs-details;
+
+  border: 1px solid black;
+  padding: 5px;
+
+  display: grid;
+  grid-row-gap: 0.4rem;
+  grid-template-columns: 30% 30% 30% 10%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "class background player ."
+    "race alignment experience level";
+}
+section.cs-details .class { grid-area: class; }
+section.cs-details .background { grid-area: background; }
+section.cs-details .player { grid-area: player; }
+section.cs-details .race { grid-area: race; }
+section.cs-details .alignment { grid-area: alignment; }
+section.cs-details .experience { grid-area: experience; }
+section.cs-details .level { grid-area: level; }
+
+section.cs-equipment {
+  grid-area: cs-equipment;
+
+  align-self: start;
+  min-height: 15em;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: center;
+}
+section.cs-equipment ul { flex: 1 0 auto; }
+section.cs-equipment label { text-align: center; }
+
+section.cs-features {
+  grid-area: cs-features;
+
+  align-self: stretch;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: center;
+}
+section.cs-features ul {
+  flex: 1 0 auto;
+  list-style: none;
+  margin: 2px;
+}
+section.cs-features .feature {
+  display: flex;
+
+  align-content: stretch;
+  align-items: stretch;
+  flex-direction: row;
+}
+section.cs-features .feature .feature-label { flex: 1 0 auto; margin-right: 10px; }
+section.cs-features .feature .edit-feature { color: #000; cursor: pointer; }
+section.cs-features label { text-align: center; }
+
+section.cs-hit-dice {
+  grid-area: cs-hit-dice;
+
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: center;
+}
+section.cs-hit-dice .edit-hit-dice {
+  position: relative;
+  display: block;
+  float: right;
+
+  margin: -5px 0px 0px auto;
+  padding: 0px;
+  top: 5px;
+  right: 2px;
+}
+section.cs-hit-dice .token-property { 
+  font-size: 1.75vw;
+  flex: 1 0 auto;
+
+  margin-top: 10px;
+  text-align: center;
+}
+section.cs-hit-dice label { text-align: center; }
+
+section.cs-hitpoints {
+  grid-area: cs-hitpoints;
+}
+section.cs-hitpoints .current-and-maximum-hp,
+section.cs-hitpoints .temporary-hp {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: center;
+}
+section.cs-hitpoints .current-and-maximum-hp label,
+section.cs-hitpoints .temporary-hp label {
+  text-align: center;
+}
+section.cs-hitpoints .current-and-maximum-hp .maximum-hp {
+  position: relative;
+  float: left;
+}
+section.cs-hitpoints .edit-hp,
+section.cs-hitpoints .edit-temp-hp {
+  position: relative;
+  display: block;
+  float: right;
+
+  margin: -5px 0px 0px auto;
+  padding: 0px;
+  top: 5px;
+  right: 2px;
+}
+section.cs-hitpoints .token-property { 
+  font-size: 1.25rem;
+  flex: 1 0 auto;
+
+  margin-top: 5px;
+  text-align: center;
+}
+
+
+section.cs-hitpoints .current-and-maximum-hp,
+section.cs-hitpoints .temporary-hp {
+  border: 1px solid #000;
+  flex: 1 0 auto;
+  margin: 2px 0px;
+}
+section.cs-hitpoints .maximum-hp {
+  border: 1px solid #000;
+  width: 25%;
+  margin: 1px auto;
+  min-height: .71rem;
+}
+
+section.cs-initiative {
+  grid-area: cs-initiative;
+
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+section.cs-initiative .edit-initiative {
+  position: relative;
+  display: block;
+  float: right;
+
+  margin: -5px 0px 0px auto;
+  padding: 0px;
+  top: 5px;
+  right: 2px;
+}
+section.cs-initiative .token-property { 
+  font-size: 1.25rem;
+  flex: 1 0 auto;
+
+  margin-top: 5px;
+  text-align: center;
+}
+section.cs-initiative label { text-align: center; }
+
+section.cs-inspiration {
+  grid-area: cs-inspiration;
+
+  align-self: stretch;
+  padding: 3px;
+  text-align: center;
+}
+section.cs-inspiration * { line-height: 1.25rem; }
+section.cs-inspiration a .icon { width: 0.85rem; }
+section.cs-inspiration label {
+  font-size: 0.85rem;
+  margin-left: 15px;
+}
+
+section.cs-name {
+  grid-area: cs-name;
+
+  border: 1px solid black;
+  border-right: 0;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: #eee;
+  margin: 0.7rem 0rem;
+}
+
+section.cs-passive-perception {
+  grid-area: cs-passive-perception;
+}
+
+section.cs-personality {
+  grid-area: cs-personality;
+
+  align-self: stretch;
+}
+section.cs-personality .traits,
+section.cs-personality .ideals,
+section.cs-personality .bonds,
+section.cs-personality .flaws {
+  height: 65px;
+  max-height: 65px;
+  margin: 2px 0px;
+
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: center;
+}
+section.cs-personality .traits span,
+section.cs-personality .ideals span,
+section.cs-personality .bonds span,
+section.cs-personality .flaws span {
+  flex: 1 0 auto;
+  margin: 3px;
+  max-height: 50px;
+  overflow-y: scroll;
+}
+section.cs-personality label { text-align: center; }
+
+
+section.cs-proficiencies {
+  grid-area: cs-proficiencies;
+
+  align-self: start;
+  min-height: 15em;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: center;
+}
+section.cs-proficiencies ul { flex: 1 0 auto; }
+section.cs-proficiencies label { text-align: center; }
+
+section.cs-proficiency-bonus {
+  grid-area: cs-proficiency-bonus;
+}
+
+section.cs-saving-throws {
+  grid-area: cs-saving-throws;
+
+  border: 1px solid #000000;
+  display: flex;
+  flex-direction: column;
+}
+
+section.cs-saving-throws label { text-align: center; }
+
+section.cs-skills {
+  grid-area: cs-skills;
+
+  display: flex;
+  flex-direction: column;
+}
+
+section.cs-skills label { text-align: center; }
+section.cs-skills .skill {
+  line-height: 1rem;
+  height: 1rem;
+}
+section.cs-skills .skill * { font-size: 0.55rem; }
+section.cs-skills .skill .icon { font-style: normal; margin-right: 1px;  }
+section.cs-skills .skill .proficiency-bonus { margin-right: 1px; display: inline-block; position: relative; top: 1px; }
+section.cs-skills .skill .related-ability { color: #999; }
+
+section.cs-speed {
+  grid-area: cs-speed;
+
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+section.cs-speed .edit-speed {
+  position: relative;
+  display: block;
+  float: right;
+
+  margin: -5px 0px 0px auto;
+  padding: 0px;
+  top: 5px;
+  right: 2px;
+}
+section.cs-speed .token-property { 
+  font-size: 1.25rem;
+  flex: 1 0 auto;
+
+  margin-top: 5px;
+  text-align: center;
+}
+section.cs-speed label { text-align: center; }
+
+section.cs-stats {
+  grid-area: cs-stats;
+
+  align-self: center;
+  background-color: #e6e6e6;
+  padding: 5px 5px;
+  margin: 3px 5px;
+}
+section.cs-stats .ability-score {
+  background-color: #fff;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5px 2px;
+}
+section.cs-stats .ability-score .modifier {
+  font-size: 1.5rem;
+}
+
+
+.accordion label {
+}
+.accordion input:checked + label,
+.accordion input:checked + label:hover {
+  background-color:#a73f2d;
+  color: #fff;
+  text-shadow: none;
+}
+.accordion-content .feature {
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+  flex-direction: row;
+  padding: 5px;
+}
+.accordion-content .feature * {
+  font-size: 0.8rem;
+}
+.accordion-content .feature span { flex: 1 0 auto; }
+.accordion-content .feature a .icon { width: 1.15rem; }
+
+
+.attacks-editor tr td * {
+  line-height: 1rem;
+  padding-right: 10px;
+}
+.attacks-editor .attack-field-label { display: inline-block; }
+.attacks-editor .attack-field {
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+}
+.attacks-editor .attack-field .dice-field,
+.attacks-editor .attack-field .save-field { width: 75px; }
+
+
+.property-editor header {
+  background-color: #eee;
+  line-height: 1.15rem;
+}
+.property-editor nav {
+  display: flex;
+  flex-direction: rows;
+  align-items: stretch;
+  align-content: stretch;
+  justify-content: space-evenly;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.property-editor nav a {
+  display: inline-block;
+
+  flex: 1 0 auto;
+  background-color:#a73f2d;
+  cursor:pointer;
+  color:#ffffff;
+  line-height: 2rem;
+  padding: 0 .25rem;
+}
+.property-editor nav a:hover {
+  background-color:#b34332;
+}
+.property-editor nav a.active {
+  background-color:#999;
+}

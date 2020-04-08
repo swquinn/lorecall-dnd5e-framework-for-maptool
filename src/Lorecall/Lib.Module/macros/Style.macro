@@ -1,0 +1,2 @@
+[h:css=macro.args]
+<link rel="stylesheet" href="[r:css]@[r:getMacroLocation()]" type="text/css">

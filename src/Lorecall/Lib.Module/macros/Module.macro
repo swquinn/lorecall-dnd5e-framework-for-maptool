@@ -1,0 +1,44 @@
+[h:args=decode(getStrProp(macro.args,"args"))]
+[h:name=decode(getStrProp(macro.args,"name"))]
+[h:library=decode(getStrProp(macro.args,"library"))]
+[h:lib=decode(getStrProp(macro.args,"lib"))]
+
+[h:module=getMacroName()]
+[h:currentMap=getCurrentMapName()]
+[r,if(library=="Module"),frame(if(library=="Module","Module","Index"),"Temporary=0"):{
+
+<link rel="stylesheet" type="text/css" href="css@[r: getMacroLocation()]">
+
+<p>
+[r:macrolink("[Share]","Module@This","all","args="+encode(args)+";name="+encode(name)+";library=Module","")]
+</p>
+
+
+
+[macro("Syntax@Lib:Module"): args]
+
+
+
+
+
+};{
+[r,token("Lib:"+module),if(currentMap=="A1.DM Screen"),code:{
+  
+  [macro("Index@Lib:Module"):macro.args]
+  
+  };{
+  [h:setCurrentMap("A1.DM Screen")]
+  [macro("Index@Lib:Module"):macro.args]
+  [h:setCurrentMap(currentMap)]
+  
+  }]
+
+
+
+
+
+}]
+
+
+
+[r:if(name=="","",macrolink(name,"Module@Lib:Module","none","args="+encode(args)+";name="+encode(name)+";library=Module",""))]

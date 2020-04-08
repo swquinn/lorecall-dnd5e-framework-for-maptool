@@ -1,0 +1,2 @@
+[h:script=macro.args]
+<script type="text/javascript" src="[r:script]@[r:getMacroLocation()]"></script>

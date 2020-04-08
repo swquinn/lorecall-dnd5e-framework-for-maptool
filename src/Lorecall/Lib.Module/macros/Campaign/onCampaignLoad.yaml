@@ -1,0 +1,6 @@
+macro:
+  label: onCampaignLoad
+  group: Campaign
+  auto_execute: True
+  options:
+    allow_players_to_edit_macro: False
