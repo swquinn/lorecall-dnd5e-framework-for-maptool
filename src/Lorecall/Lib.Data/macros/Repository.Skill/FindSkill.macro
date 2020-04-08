@@ -1,0 +1,6 @@
+[h:skillName=arg(0)]
+[h:allSkills=data.collection("character_skills")]
+[h:skill=json.get(
+  json.path.read(allSkills, "[?(@.name=='"+skillName+"')]"), 0
+)]
+[h:macro.return=skill]

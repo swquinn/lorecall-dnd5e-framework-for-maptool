@@ -1,0 +1,46 @@
+h1.collection {
+  background-color: #bbbbbb;
+  font-family: monospaced;
+}
+table {
+  border: 0px solid #000000;
+  border-collapse: collapse;
+  width: 100%;
+}
+table tr, table th, table td {
+  border: 0px solid #000000;
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+}
+table td {
+  font-size: 11pt;
+  font-family: monospaced;
+}
+
+table.data-table { background-color: #ffffff; }
+table.data-table th { padding: 5px; }
+table.data-table td { padding: 5px; }
+table.data-table tr.data-table-header { background-color: #666666; color: #aaaaaa; }
+table.data-table tr.even { background-color: #dfdfdf; }
+table.data-table tr.odd { background-color: #ffffff; }
+
+table td.edit,
+table td.edit a {
+  border: 0px solid #000000;
+  width: 30px;
+  font-family: sans-serif;
+  text-decoration: none;
+}
+
+table.metadata {
+  border: 0px;
+}
+
+
+table.metadata td {
+  border: 0px;
+  font-size: 12pt;
+  font-family: sans-serif;
+  text-align: left;
+}

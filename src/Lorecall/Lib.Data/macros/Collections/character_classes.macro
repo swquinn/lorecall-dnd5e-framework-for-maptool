@@ -1,0 +1,72 @@
+[h:schema='{
+  "fields": [
+    { "fieldName": "uuid" },
+    { "fieldName": "name" },
+    { "fieldName": "library" }
+  ]
+}']
+
+[h:documents='[
+  {
+    "uuid":    "bc439a8c-7b1c-4f2d-8bbc-fe58b15eccf8",
+    "name":    "Barbarian",
+    "library": "Lib:Barbarian"
+  },
+  {
+    "uuid":    "3f6f18bb-386d-4a09-9950-050f408c84a3",
+    "name":    "Bard",
+    "library": "Lib:Bard"
+  },
+  {
+    "uuid":    "73a3ec49-6c8c-4d0a-9d9e-dd81ac618d76",
+    "name":    "Cleric",
+    "library": "Lib:Cleric"
+  },
+  {
+    "uuid":    "3c294009-3300-4e3e-b0a6-afbd7f8ca2bf",
+    "name":    "Druid",
+    "library": "Lib:Druid"
+  },
+  {
+    "uuid":    "c33d18b7-2b5f-4b7f-a7f3-f961cfe6d64f",
+    "name":    "Fighter",
+    "library": "Lib:Fighter"
+  },
+  {
+    "uuid":    "bc5f4247-f1a4-4be2-b2ba-77e476b94222",
+    "name":    "Monk",
+    "library": "Lib:Monk"
+  },
+  {
+    "uuid":    "aea1c2a0-78a3-46ef-ab66-f048e7b6356f",
+    "name":    "Paladin",
+    "library": "Lib:Paladin"
+  },
+  {
+    "uuid":    "7c520d77-8eb3-4bca-b6fc-87f14f09ea62",
+    "name":    "Ranger",
+    "library": "Lib:Ranger"
+  },
+  {
+    "uuid":    "cfb98333-471d-4c6a-9da2-23aa97c3f117",
+    "name":    "Rogue",
+    "library": "Lib:Rogue"
+  },
+  {
+    "uuid":    "ffb15020-e246-4ade-b29c-74df9fad32e2",
+    "name":    "Sorcerer",
+    "library": "Lib:Sorcerer"
+  },
+  {
+    "uuid":    "24ed60ed-ad54-4ace-9410-6b4fd891bc7c",
+    "name":    "Warlock",
+    "library": "Lib:Warlock"
+  },
+  {
+    "uuid":    "0a4d78a3-017f-4aad-bfcf-7f3530bffba3",
+    "name":    "Wizard",
+    "library": "Lib:Wizard"
+  }
+]']
+[h:collection=json.set("{}", "schema", schema, "data", documents)]
+[h:macro.return=collection]

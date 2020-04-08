@@ -1,0 +1,5 @@
+[h:collectionName = arg(0)]
+[macro(collectionName+"@this"): token.name]
+[h:collection=macro.return]
+[h:data=json.get(collection, "data")]
+[h:macro.return=data]

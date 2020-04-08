@@ -1,0 +1,4 @@
+[h: defineFunction("data.collection", "GetCollectionData@Lib:Data")]
+[h: defineFunction("data.collectionSchema", "GetCollectionSchema@Lib:Data")]
+
+[h: defineFunction("data.findSkill", "FindSkill@Lib:Data")]

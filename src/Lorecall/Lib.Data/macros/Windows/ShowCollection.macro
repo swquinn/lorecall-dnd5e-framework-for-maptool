@@ -1,0 +1,52 @@
+[h:tokenId        = getStrProp(macro.args, "tokenId")]
+[h:collectionName = getStrProp(macro.args, "collection")]
+
+[h:refreshArgs    = strformat("tokenId=%{tokenId}; collection=%{collectionName}")]
+
+[h:schema=data.collectionSchema(collectionName)]
+[h:fields=json.path.read(schema, "fields..fieldName")]
+
+[h:documents=data.collection(collectionName)]
+      
+[frame("Collections","width=800; height=400; temporary=1;"): {
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css@[r: getMacroLocation()]" type="text/css">
+    <title>Viewing Collection - [r:collectionName]</title>
+  </head>
+  <body>
+    <h1 class="collection">[r:collectionName]</h1>
+    <div style="text-align: right">
+      <span>&#91; Export &#93;</span>
+      &nbsp;
+      <span>&#91; [r:macroLink("Refresh","ShowCollection@Lib:Data","none",refreshArgs,tokenId)] &#93;</span>
+    </div>
+
+    <table class="data-table">
+      <tr class="data-table-header">
+        <th>id</th>
+        [foreach(field,fields, "", ""),CODE: {
+          <th>[r:field]</th>
+        }]
+      </tr>
+
+      [h:rowStyle="odd"]
+      [for(index,0,json.length(documents),1,""),CODE:
+      {
+        [h:item=json.get(documents, index)]
+        <tr class="[r:rowStyle]">
+          <td>[r:index]</td>
+          [r,foreach(field, fields, "", ""): "<td>" + if(json.get(item, field)=="","NULL",json.get(item, field)) + "</td>"]
+        </tr>
+        [h:rowStyle=if(rowStyle=="odd", "even", "odd")]
+      }]
+    </table>
+      
+    <table class="metadata">
+      <tr>
+        <td>Records: [r:json.length(documents)]</td>
+      </tr>
+    </table>
+  </body>
+</html>
+}]

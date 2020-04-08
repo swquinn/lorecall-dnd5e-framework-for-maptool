@@ -1,0 +1,17 @@
+[h:schema='{
+  "fields": [
+    { "fieldName": "uuid" },
+    { "fieldName": "name" },
+    { "fieldName": "library" }
+  ]
+}']
+
+[h:documents='[
+  {
+    "uuid":    "14dd8e34-d49f-49cc-a62d-3da0c769a33c",
+    "name":    "Acolyte",
+    "library": "Lib:BackgroundAcolyte"
+  }
+]']
+[h:collection=json.set("{}", "schema", schema, "data", documents)]
+[h:macro.return=collection]

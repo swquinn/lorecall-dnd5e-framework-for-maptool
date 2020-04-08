@@ -1,0 +1,6 @@
+macro:
+  label: FindSkill
+  group: Repository.Skill
+  auto_execute: False
+  options:
+    allow_players_to_edit_macro: False

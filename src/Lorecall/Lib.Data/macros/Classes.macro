@@ -1,0 +1,4 @@
+[h:tokenId=findToken(token.name)]
+[h:collection="character_classes"]
+
+[macro("ShowCollection@Lib:Data"): "tokenId="+tokenId+"; collection="+collection]

@@ -1,0 +1,7 @@
+macro:
+  label: styles.css
+  file: styles.css
+  group: Styles
+  auto_execute: False
+  options:
+    allow_players_to_edit_macro: False

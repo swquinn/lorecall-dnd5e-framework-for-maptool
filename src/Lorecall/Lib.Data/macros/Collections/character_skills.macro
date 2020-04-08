@@ -1,0 +1,102 @@
+[h:schema='{
+  "fields": [
+    { "fieldName": "uuid" },
+    { "fieldName": "name" },
+    { "fieldName": "ability" }
+  ]
+}']
+
+[h:documents='[
+  {
+    "uuid": "e98feafb-124c-40ac-8317-ab686492e317",
+    "name": "Acrobatics",
+    "ability": "Dexterity"
+  },
+  {
+    "uuid": "167d5314-896c-4e06-a539-a3f1ca00d677",
+    "name": "Animal Handling",
+    "ability": "Wisdom"
+  },
+  {
+    "uuid": "9f68bcf1-e893-4a5f-b032-d34211017af0",
+    "name": "Arcana",
+    "ability": "Intelligence"
+  },
+  {
+    "uuid": "208bb26d-632b-4551-acab-837a7409f52a",
+    "name": "Athletics",
+    "ability": "Strength"
+  },
+  {
+    "uuid": "19c1c40c-ae07-4483-8283-103c5e49e859",
+    "name": "Deception",
+    "ability": "Charisma"
+  },
+  {
+    "uuid": "a001fe9c-10f2-4542-af7f-1810411797ad",
+    "name": "History",
+    "ability": "Intelligence"
+  },
+  {
+    "uuid": "8ff7a5a0-75fd-4abb-9528-1468944f05d0",
+    "name": "Insight",
+    "ability": "Wisdom"
+  },
+  {
+    "uuid": "23288bdb-49fc-4713-bf3e-11c716f65c08",
+    "name": "Intimidation",
+    "ability": "Charisma"
+  },
+  {
+    "uuid": "672b2434-77b9-4f72-9752-5f285676040e",
+    "name": "Investigation",
+    "ability": "Intelligence"
+  },
+  {
+    "uuid": "318fc8a7-8c1d-426e-a88d-0490efb0ad9d",
+    "name": "Medicine",
+    "ability": "Wisdom"
+  },
+  {
+    "uuid": "89517ed9-a7a9-4371-b33c-52cacd4bd7eb",
+    "name": "Nature",
+    "ability": "Intelligence"
+  },
+  {
+    "uuid": "363ca84a-b2c8-4bb3-8548-992c25c0f24b",
+    "name": "Perception",
+    "ability": "Wisdom"
+  },
+  {
+    "uuid": "fce30250-c585-43fe-93a6-138ed088fdbc",
+    "name": "Performance",
+    "ability": "Charisma"
+  },
+  {
+    "uuid": "a1f85a7c-3334-49a0-bae0-d350a6b8c105",
+    "name": "Persuasion",
+    "ability": "Charisma"
+  },
+  {
+    "uuid": "ba8a7698-ee53-47d0-b472-71a5c3062b60",
+    "name": "Religion",
+    "ability": "Intelligence"
+  },
+  {
+    "uuid": "59baedad-e0e9-45ea-a572-465ac7828ca5",
+    "name": "Sleight of Hand",
+    "ability": "Dexterity"
+  },
+  {
+    "uuid": "3684d79a-802d-4c0a-a5ec-94b9b32b1d1c",
+    "name": "Stealth",
+    "ability": "Dexterity"
+  },
+  {
+    "uuid": "56e39284-1ddf-41f0-acf4-dca3c738304d",
+    "name": "Survival",
+    "ability": "Wisdom"
+  }
+]']
+[h:collection=json.set("{}", "schema", schema, "data", documents)]
+[h:macro.return=collection]
