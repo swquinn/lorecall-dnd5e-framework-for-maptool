@@ -1,0 +1,33 @@
+[h:tokenId=getStrProp(macro.args, "tokenId")]
+[h:copyCallback=getStrProp(macro.args, "copyCallback")]
+
+[h:races='[]']
+[h:classes=data.collection("character_classes")]
+[h:backgrounds='[]']
+[h:feats='[]']
+
+[h:libs=json.merge('[]', races, classes, backgrounds, feats)]
+<section class="compendium accordion">
+  [foreach(lib, libs, "", ""), CODE: {
+    [h:name=json.get(lib, "name")]
+    [h:libraryName=json.get(lib, "library")]
+    <div class="accordion-content">
+      <input id="[r:libraryName]" name="[r:libraryName]" type="checkbox" />
+      <label for="[r:libraryName]">[r:name]</label>
+      [h:features=rules.getLibraryFeatures(libraryName)]
+      <ul>
+        [h:rowStyle="odd"]
+        [foreach(feature, features, "", ""), CODE: {
+          <li class="[r:rowStyle]">
+            [h:featureProps=""]
+            [h:featureProps=setStrProp(featureProps, "feature", feature)]
+            [h:featureProps=setStrProp(featureProps, "copyCallback", copyCallback)]
+            [h:featureProps=setStrProp(featureProps, "tokenId", tokenId)]
+            [macro("Feature@this"): featureProps]
+          </li>
+          [h:rowStyle=if(rowStyle=="odd", "even", "odd")]
+        }]
+      </ul>
+    </div>
+  }]
+</section>

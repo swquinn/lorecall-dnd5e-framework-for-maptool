@@ -1,0 +1,25 @@
+[h:feature=getStrProp(macro.args, "feature")]
+[h:copyCallback=getStrProp(macro.args, "copyCallback")]
+[h:tokenId=getStrProp(macro.args, "tokenId")]
+
+[h:path=json.get(feature, "path")]
+[h:viewAction=macroLinkText("ViewRule@Lib:Rules", "", path)]
+
+<div class="feature">
+  <span>
+    <a href="[r:viewAction]">
+      [r:json.get(feature, "name")]
+    </a>
+  </span>
+
+  [if(copyCallback!=""), CODE: {
+    [h:args=""]
+    [h:args=setStrProp(args, "macro", path)]
+    [h:args=setStrProp(args, "macroGroup", "Features")]
+    [h:args=setStrProp(args, "tokenId", tokenId)]
+    [h:addAction=macroLinkText(copyCallback, "none", args, tokenId)]
+    <a href="[r:addAction]">
+      <i class="icon">[r:icons.listAdd()]</i>
+    </a>
+  };{}]
+</div>

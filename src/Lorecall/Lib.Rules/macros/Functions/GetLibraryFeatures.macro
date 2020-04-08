@@ -1,0 +1,24 @@
+[h:lib=arg(0)]
+[h:map=getTokenMap(lib)]
+[h:assert(startsWith(lib, "Lib:"), "Unable to get features from non-library macro. The macro: " + lib + " is not a library macro.", 1)]
+
+[h:macros=getMacros(",", lib, map)]
+[h:macroData='[]']
+[h,token(lib),foreach(m, macros), CODE: {
+  [h:index=getMacroIndexes(m, ",", lib, map)]
+  [h:macroJson='{}']
+
+  [h:macroProps=getMacroProps(index, ";", lib, map)]
+  [h:macroLabel=getStrProp(macroProps, "label")]
+  [h:macroGroup=getStrProp(macroProps, "group")]
+
+  [h:macroJson=json.set(macroJson,
+    "name", macroLabel,
+    "group", macroGroup,
+    "path", strformat("%{macroLabel}@" + lib)
+  )]
+  [h:macroData=json.append(macroData,macroJson)]
+}]
+
+[h:features=json.path.read(macroData, "[?(@.group=~/Features.*/i)]")]
+[h:macro.return=features]

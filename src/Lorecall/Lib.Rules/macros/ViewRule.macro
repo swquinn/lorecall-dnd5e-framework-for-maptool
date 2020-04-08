@@ -1,0 +1,17 @@
+[h:ruleMacro=macro.args]
+[h:labelAndLibrary=core.strsplit(ruleMacro, "@")]
+[h:macroLabel=json.get(labelAndLibrary, "left")]
+
+[h:title=strformat("%{macroLabel}")]
+[dialog5(title, "width=350; height=480; temporary=1; input=1; closebutton=0; noframe=0"): {
+<html>
+  <head>
+  [macro("Style@Lib:Module"): "lorecall.css"]
+  [macro("Style@Lib:Module"): "dnd5e.css"]
+    <title>[r:title]</title>
+  </head>
+  <body class="property-editor">
+  [macro(ruleMacro): ""]
+  </body>
+</html>
+}]
