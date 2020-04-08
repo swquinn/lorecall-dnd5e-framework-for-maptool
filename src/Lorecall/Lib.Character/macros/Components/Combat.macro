@@ -1,0 +1,11 @@
+[h:tokenId=currentToken()]
+
+<section class="cs-combat">
+  [macro("ArmorClass@this"): tokenId]
+  [macro("Initiative@this"): tokenId]
+  [macro("Speed@this"): tokenId]
+  [macro("HitPoints@this"): tokenId]
+  [macro("HitDice@this"): tokenId]
+  [macro("DeathSaves@this"): tokenId]
+  [macro("Attacks@Lib:Character"): tokenId]
+</section>

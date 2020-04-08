@@ -1,0 +1,13 @@
+[h:props=macro.args]
+
+<p>
+Browse features from races, classes, etc. to add to your character.
+</p>
+
+[h:callback="FeaturesEditor@"+getMacroLocation()]
+[h:props=setStrProp(props, "callback", callback)]
+
+[h:copyCallback="CopyFeature@"+getMacroLocation()]
+[h:props=setStrProp(props, "copyCallback", copyCallback)]
+
+[macro("AllFeatures@Lib:Rules"): props]

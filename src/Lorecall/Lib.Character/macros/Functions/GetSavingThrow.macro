@@ -1,0 +1,14 @@
+[h:savingThrow=arg(0)]
+[h:ability=savingThrow]
+[h:savingThrows=getProperty("SavingThrows")]
+
+[h:theSavingThrow=json.set("{}",
+  "savingThrow", savingThrow,
+  "ability", ability,
+  "proficiency", "NOT_PROFICIENT"
+)]
+[if(json.length(savingThrows)>0), CODE: {
+  [h:item=json.get(savingThrows, savingThrow)]
+  [h:theSavingThrow=if(json.isEmpty(item), theSavingThrow, item)]
+};{}]
+[h:macro.return=theSavingThrow]

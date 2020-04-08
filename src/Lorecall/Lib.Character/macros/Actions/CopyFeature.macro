@@ -1,0 +1,17 @@
+[h:theMacro=getStrProp(macro.args, "macro")]
+[h:theMacroGroup=getStrProp(macro.args, "macroGroup")]
+[h:tokenId=getStrProp(macro.args, "tokenId")]
+
+[h:labelAndLibrary=core.strsplit(theMacro, "@")]
+[h:macroLabel=json.get(labelAndLibrary, "left")]
+[h:macroSource=json.get(labelAndLibrary, "right")]
+[h:macroSourceMap=getTokenMap(macroSource)]
+
+[h:macroIndices=getMacroIndexes(macroLabel, ",", macroSource, macroSourceMap)]
+[h:hasMultiple=0]
+[h,if(indexOf(macroIndices, ",")>0): hasMultiple=1]
+[h:assert(hasMultiple==0, strformat(
+  "The library: %{macroSource} "+
+  "has multiple macros with the name: %{macroLabel}"
+))]
+[h:core.copyMacro(macroIndices, macroSource, tokenId, theMacroGroup)]

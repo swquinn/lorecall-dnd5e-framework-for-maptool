@@ -1,0 +1,21 @@
+[h:props=macro.args]
+[h:component=getStrProp(props, "component")]
+
+[h:props=setStrProp(props, "macroCallback", "PropertyEditor@" + getMacroLocation())]
+[h:props=setStrProp(props, "tokenId", currentToken())]
+[h:props=deleteStrProp(props, "component")]
+
+[h,if(component==""): abort(0)]
+[dialog5("Edit Property","width=500; height=480; temporary=1; input=0; closebutton=0"): {
+<html>
+  <head>
+  [macro("Style@Lib:Module"): "lorecall.css"]
+  [macro("Style@Lib:Module"): "dnd5e.css"]
+    <title>Edit Property</title>
+  </head>
+  <body>
+    <h1>Edit Classes [r:token.name]</h1>
+    [macro(component+"@this"): props]
+  </body>
+</html>
+}]

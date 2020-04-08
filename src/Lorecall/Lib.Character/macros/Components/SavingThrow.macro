@@ -1,0 +1,32 @@
+[h:tokenId=currentToken()]
+[h:ability=macro.args]
+
+[h:savingThrow=character.getSavingThrow(ability)]
+[h:savingThrowProficiency=json.get(savingThrow, "proficiency")]
+[h:savingThrowModifier=character.calculateSavingThrowModifier(savingThrow, ability)]
+
+<div class="saving-throw">
+  <i class="icon">
+    [h:proficiencyIndicator=icons.circle()]
+    [if(savingThrowProficiency=="PROFICIENT"), code: {
+      [h:proficiencyIndicator=icons.circleSolid()]
+    };{}]
+    [if(savingThrowProficiency=="EXPERT"), code: {
+      [h:proficiencyIndicator="E"]
+    };{}]
+    [r:macroLink(proficiencyIndicator, "SavingThrowEditor@this", "none", savingThrow, tokenId)]
+  </i>
+
+  <span class="proficiency-bonus">
+    [r:if(savingThrowModifier>=0, strformat("+%{savingThrowModifier}"), savingThrowModifier)]
+  </span>
+
+  [h:args=""]
+  [h:args=setStrProp(args, "savingThrow", ability)]
+  [h:args=setStrProp(args, "value", savingThrowModifier)]
+  [h:abilityCheckRollLink=macroLinkText("RollSavingThrow@Lib:Character","all",args,tokenId)]
+
+  <a class="label" href="[r:abilityCheckRollLink]">
+    [r:ability]
+  </a>
+</div>

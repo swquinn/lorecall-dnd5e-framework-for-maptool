@@ -1,0 +1,28 @@
+[h:tokenId=currentToken()]
+
+[h:view=getStrProp(macro.args, "view")]
+[h,if(view==""): view="NewFeatureForm"]
+
+[h:page=getStrProp(macro.args, "page")]
+[h,if(page==""): page=""]
+
+[h:title=strformat("Edit Features - %{token.name}")]
+[dialog5(title, "width=450; height=600; temporary=1; input=1; closebutton=0; noframe=0"): {
+<html>
+  <head>
+  [macro("Style@Lib:Module"): "lorecall.css"]
+  [macro("Style@Lib:Module"): "dnd5e.css"]
+    <title>[r:title]</title>
+  </head>
+  <body class="property-editor">
+  [macro("FeatureEditorHeader@this"): view]
+
+    [h:props=""]
+  [h:props=setStrProp(props, "tokenId", tokenId)]
+  [h:props=setStrProp(props, "view", view)]
+  [h:props=setStrProp(props, "page", page)]
+  [h:component=strformat("%{view}@this")]
+  [macro(component): props]
+  </body>
+</html>
+}]

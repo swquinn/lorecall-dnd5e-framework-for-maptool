@@ -1,0 +1,10 @@
+<p>
+Add a new feature to your character.
+</p>
+
+<form>
+  <label>Feature</label>
+  <input type="text" placeholder="Feature Name, e.g. Bardic Inspiration" />
+  <label>Feature Text</label>
+  <textarea placeholder="The description of the feature, and its mechanics."></textarea>
+</form>

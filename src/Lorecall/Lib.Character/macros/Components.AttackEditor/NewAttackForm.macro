@@ -1,0 +1,189 @@
+[h:attackId=getStrProp(macro.args, "attackId")]
+[h:tokenId=getStrProp(macro.args, "tokenId")]
+[h:dialogTitle=getStrProp(macro.args, "dialogTitle")]
+[h:submitAction=macroLinkText("UpdateAttack@Lib:Character", "none")]
+[h:cancelAction=macroLinkText("CancelDialog@Lib:Module", "none", dialogTitle)]
+
+<p>
+Add a new attack character.
+</p>
+
+[h:attack=character.getAttack(attackId)]
+<form action="[r:submitAction]">
+  <input type="hidden" name="attackId" value="[r:json.get(attack, 'id')]" />
+  <input type="hidden" name="tokenId" value="[r:tokenId]" />
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <label for="attack-name">Attack</label>
+        </td>
+        <td class="attack-field">
+          <input id="attack-name" name="name" class="attack-field" type="text" required="true" placeholder="Attack, e.g. Longsword" value="[r:json.get(attack, 'name')]"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="attack-type">Attack Type</label>
+        </td>
+        <td class="attack-field">
+          [h:attackType=json.get(attack, "type")]
+          <select id="attack-type" name="type">
+            <option
+                value="Melee Weapon Attack"
+                [r,if(attackType=="Melee Weapon Attack"): "selected"]>
+              Melee Weapon Attack
+            </option>
+            <option
+                value="Ranged Weapon Attack"
+                [r,if(attackType=="Ranged Weapon Attack"): "selected"]>
+              Ranged Weapon Attack
+            </option>
+            <option
+                value="Spell Attack"
+                [r,if(attackType=="Spell Attack"): "selected"]>
+              Spell Attack
+            </option>
+            <option
+                value="Saving Throw"
+                [r,if(attackType=="Saving Throw"): "selected"]>
+              Saving Throw
+            </option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="attack-modifier">Attack Modifier</label>
+        </td>
+        <td class="attack-field">
+          <input id="attack-modifier" name="modifier" type="text" placeholder="0" value="[r:json.get(attack, 'modifier')]"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="attack-critical">Crits On</label>
+        </td>
+        <td class="attack-field">
+          [h:critLowerBound=json.get(attack, 'critical')]
+          [h,if(critLowerBound==""): critLowerBound=20]
+          <input id="attack-critical" name="critical" type="text" placeholder="20" value="[r:critLowerBound]"/>
+          <i class="icon" title="Enter the lower bounds of the critical range, i.e. 19, instead of the range itself (19-20)">[r:icons.info()]</i>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="attack-proficiency">Is Proficient?</label>
+        </td>
+        <td class="attack-field">
+          [h:isProficient=json.get(attack, "isProficient")]
+          [if(isProficient=="on"), CODE: {
+            <input id="attack-proficiency" name="isProficient" type="checkbox" checked/>
+          }; {
+            <input id="attack-proficiency" name="isProficient" type="checkbox"/>
+          }]
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="attack-range">Range</label>
+        </td>
+        <td class="attack-field">
+          <input id="attack-range" name="range" type="text" placeholder="5 ft." value="[r:json.get(attack, 'range')]"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="attack-primary-damage">Primary Damage</label>
+        </td>
+        <td class="attack-field">
+          <input id="attack-primary-damage" name="primaryDamage" class="dice-field" type="text" required="true" placeholder="1d6" value="[r:json.get(attack, 'primaryDamage')]"/>
+          <input id="attack-primary-damage" name="primaryDamageType" type="text" placeholder="damage type, e.g. slashing" value="[r:json.get(attack, 'primaryDamageType')]"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="attack-secondary-damage">Secondary Damage</label>
+        </td>
+        <td class="attack-field">
+          <input id="attack-secondary-damage" name="secondaryDamage" class="dice-field" type="text" placeholder="1d6" value="[r:json.get(attack, 'secondaryDamage')]"/>
+          <input id="attack-secondary-damage" name="secondaryDamageType" type="text" placeholder="damage type, e.g. slashing" value="[r:json.get(attack, 'secondaryDamageType')]"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="attack-saving-throw">Saving Throw</label>
+        </td>
+        <td class="attack-field">
+          [h:savingThrow=json.get(attack, "savingThrow")]
+          <select id="attack-saving-throw" name="savingThrow">
+            <option value="">- Choose Saving Throw -</option>
+            <option
+                value="Strength"
+                [r,if(savingThrow=="Strength"): "selected"]>
+              Strength
+            </option>
+            <option
+                value="Dexterity"
+                [r,if(savingThrow=="Dexterity"): "selected"]>
+              Dexterity
+            </option>
+            <option
+                value="Constitution"
+                [r,if(savingThrow=="Constitution"): "selected"]>
+              Constitution
+            </option>
+            <option
+                value="Intelligence"
+                [r,if(savingThrow=="Intelligence"): "selected"]>
+              Intelligence
+            </option>
+            <option
+                value="Wisdom"
+                [r,if(savingThrow=="Wisdom"): "selected"]>
+              Wisdom
+            </option>
+            <option
+                value="Charisma"
+                [r,if(savingThrow=="Charisma"): "selected"]>
+              Charisma
+            </option>
+
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="attack-saving-throw-dc">Save DC</label>
+        </td>
+        <td class="attack-field">
+          <input id="attack-saving-throw-dc" name="savingThrowDC" class="save-field" type="text" placeholder="15" value="[r:json.get(attack, 'savingThrowDC')]"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="attack-description">Description</label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="attack-field">
+          <textarea id="attack-description" name="description" placeholder="The description of the feature, and its mechanics.">[r:json.get(attack, "description")]</textarea>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <hr/>
+  <input type="submit" value="Save">
+  <a class="btn" href="[r:cancelAction]">Cancel</a>
+</form>

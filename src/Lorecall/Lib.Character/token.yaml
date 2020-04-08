@@ -1,0 +1,8 @@
+token:
+  name: "Lib:Character"
+  type: npc
+  config:
+    size: Small
+    properties: Pin
+    snap_to_grid: True
+    visible_to_players: True

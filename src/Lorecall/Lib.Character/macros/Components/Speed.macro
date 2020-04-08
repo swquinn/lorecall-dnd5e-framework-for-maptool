@@ -1,0 +1,13 @@
+[h:speed=getProperty("Speed")]
+
+[h:editLink=macroLinkText("SimplePropertyEditor@this", "none", "Speed", currentToken())]
+<section class="cs-speed">
+  <div class="clearfix">
+    <a href="[r:editLink]" class="edit-speed">
+      <i class="icon">[r:icons.edit()]</i>
+    </a>
+  </div>
+
+  <span class="token-property">[r:speed]</span>
+  <label>SPEED</label>
+</section>

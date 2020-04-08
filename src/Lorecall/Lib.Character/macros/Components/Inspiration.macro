@@ -1,0 +1,14 @@
+[h:tokenId=currentToken()]
+
+[h:inspiration=character.getPropertyWithDefault("Inspiration", 0)]
+
+[h:inspirationIndicator=icons.circle()]
+[h,if(inspiration>0): inspirationIndicator=icons.circleSolid()]
+
+[h:toggelInspirationLink=macroLinkText("ToggleInspiration@Lib:Character", "none", inspiration, tokenId)]
+<section class="cs-inspiration">
+  <a href="[r:toggelInspirationLink]">
+    <i class="icon">[r:inspirationIndicator]</i>
+  </a>
+  <label>INSPIRATION</label>
+</section>

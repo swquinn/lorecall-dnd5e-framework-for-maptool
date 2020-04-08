@@ -1,0 +1,10 @@
+<section class="cs-saving-throws">
+  [macro("SavingThrow@this"): "Strength"]
+  [macro("SavingThrow@this"): "Dexterity"]
+  [macro("SavingThrow@this"): "Constitution"]
+  [macro("SavingThrow@this"): "Intelligence"]
+  [macro("SavingThrow@this"): "Wisdom"]
+  [macro("SavingThrow@this"): "Charisma"]
+
+  <label>SAVING TROWS</label>
+</section>

@@ -1,0 +1,31 @@
+[h:savingThrow=macro.args]
+[h:savingThrowName=json.get(savingThrow, "savingThrow")]
+[h:savingThrowAbility=json.get(savingThrow, "ability")]
+[h:savingThrowProficiency=json.get(savingThrow, "proficiency")]
+
+[h:selectedProficiencyIndex=0]
+[if(savingThrowProficiency=="PROFICIENT"), CODE: {
+  [h:selectedProficiencyIndex=1]
+};{}]
+[if(savingThrowProficiency=="EXPERT"), CODE: {
+  [h:selectedProficiencyIndex=2]
+};{}]
+
+[h:savingThrowLabel=strformat("savingThrowLbl|%{savingThrowName}|Saving Throw|label")]
+[h:proficiencyField=strformat(
+  "proficiency|"+
+  "Not Proficient,Proficient,Expert|"+
+  "Proficiency|"+
+  "list|"+
+  "value=string select=%{selectedProficiencyIndex}"
+)]
+
+[h:abort(input(savingThrowLabel, proficiencyField))]
+
+[h:args=""]
+[h:args=setStrProp(args, "savingThrow", savingThrowName)]
+[h:args=setStrProp(args, "ability", savingThrowAbility)]
+[h:args=setStrProp(args, "proficiency", proficiency)]
+
+[macro("UpdateSavingThrow@this"): args]
+[macro("Refresh@this"): token.name]

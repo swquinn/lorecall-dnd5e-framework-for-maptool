@@ -1,0 +1,5 @@
+[h:abilityScore=arg(0)]
+
+[h:abilityScore=if(isNumber(abilityScore), abilityScore, 10)]
+[h:abilityScoreModifier=floor((abilityScore - 10) / 2)]
+[h:macro.return=abilityScoreModifier]

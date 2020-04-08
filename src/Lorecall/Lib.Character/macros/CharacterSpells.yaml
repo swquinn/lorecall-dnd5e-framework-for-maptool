@@ -1,0 +1,8 @@
+macro:
+  label: CharacterSpells
+  group: ~
+  auto_execute: False
+  min_width: 210
+  sort_by: 2
+  options:
+    allow_players_to_edit_macro: False

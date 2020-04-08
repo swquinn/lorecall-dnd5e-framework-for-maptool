@@ -1,0 +1,12 @@
+[h:level=getProperty("Level")]
+[h:level=if(isNumber(level)==0, 1, level)]
+[h:proficiencyBonus=if(
+  level>16, 6, if(
+    level>12, 5, if(
+      level>8, 4, if(
+        level>4, 3, 2
+      )
+    )
+  )
+)]
+[h:macro.return=proficiencyBonus]

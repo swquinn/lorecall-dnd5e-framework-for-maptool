@@ -1,0 +1,38 @@
+[h:tokenId=currentToken()]
+[h:skillName=macro.args]
+
+[h:skill=data.findSkill(skillName)]
+[h:characterSkill=character.getSkill(skillName)]
+[h:characterSkillProficiency=json.get(characterSkill, "proficiency")]
+
+[h:skillAbility=json.get(skill, "ability")]
+[h:abilityCheckModifier=character.calculateAbilityCheckModifier(characterSkill, skillAbility)]
+
+<div class="skill">
+  <i class="icon">
+    [h:skillProficiencyIndicator=icons.circle()]
+    [if(characterSkillProficiency=="PROFICIENT"), code: {
+      [h:skillProficiencyIndicator=icons.circleSolid()]
+    };{}]
+    [if(characterSkillProficiency=="EXPERT"), code: {
+      [h:skillProficiencyIndicator="E"]
+    };{}]
+    [r:macroLink(skillProficiencyIndicator, "SkillEditor@this", "none", characterSkill, tokenId)]
+  </i>
+
+  <span class="proficiency-bonus">
+    [r:if(abilityCheckModifier>=0, strformat("+%{abilityCheckModifier}"), abilityCheckModifier)]
+  </span>
+
+  [h:args=""]
+  [h:args=setStrProp(args, "skill", skillName)]
+  [h:args=setStrProp(args, "value", abilityCheckModifier)]
+  [h:abilityCheckRollLink=macroLinkText("RollAbilityCheck@Lib:Character", "all", args, tokenId)]
+
+  <a class="label" href="[r:abilityCheckRollLink]">
+    [r:skillName]
+    <span class="related-ability">
+      ([r:substring(skillAbility, 0, 3)])
+    </span>
+  </a>
+</div>

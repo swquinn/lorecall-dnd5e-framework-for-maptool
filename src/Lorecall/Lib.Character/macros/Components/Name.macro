@@ -1,0 +1,12 @@
+[h:tokenId=currentToken()]
+
+<section class="cs-name">
+  <div class="token-property-container">
+    <span class="token-property">
+      [r:macroLink(token.name, "Focus@this", "", tokenId, tokenId)]
+    </span>
+    <label>
+      [r:macroLink("CHARACTER NAME","NameEditor@this", "", "", tokenId)]
+    </label>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+[h:tokenId=currentToken()]
+[h:formerName=token.name]
+[h:frameTitle=strformat("Character Sheet - %{formerName}")]
+
+[h:labelField=strformat("label|Change Name|0|label|span=true")]
+[h:textField=strformat("value|%{token.name}|0|text|span=true width=32")]
+[h:abort(input(labelField, textField))]
+[r:setName(value, tokenId)]
+
+[h:closeDialog(frameTitle)]
+[macro("Refresh@this"): token.name]

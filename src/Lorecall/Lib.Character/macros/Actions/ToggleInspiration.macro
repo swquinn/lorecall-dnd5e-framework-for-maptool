@@ -1,0 +1,11 @@
+[h:tokenId=currentToken()]
+
+[h:inspiration=macro.args]
+[h,if(inspiration==""): inspiration=-1]
+
+[if(inspiration>0), CODE: {
+  [h:setProperty("Inspiration", 0, tokenId)]
+}; {
+  [h:setProperty("Inspiration", 1, tokenId)]
+}]
+[macro("Refresh@this"): token.name]

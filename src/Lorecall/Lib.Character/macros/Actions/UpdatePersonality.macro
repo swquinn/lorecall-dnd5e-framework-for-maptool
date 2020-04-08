@@ -1,0 +1,16 @@
+[h:jsonData=macro.args]
+[h:tokenId=json.get(jsonData, "tokenId")]
+[h:traits=json.get(jsonData, "traits")]
+[h:ideals=json.get(jsonData, "ideals")]
+[h:bonds=json.get(jsonData, "bonds")]
+[h:flaws=json.get(jsonData, "flaws")]
+
+[h:personality=getProperty("Personality", tokenId)]
+
+[h:personality=json.set("{}",
+  "traits", traits,
+  "ideals", ideals,
+  "bonds", bonds,
+  "flaws", flaws
+)]
+[h:setProperty("Personality", personality, tokenId)]

@@ -1,0 +1,22 @@
+<section class="cs-skills">
+  [macro("Skill@this"): "Acrobatics"]
+  [macro("Skill@this"): "Animal Handling"]
+  [macro("Skill@this"): "Arcana"]
+  [macro("Skill@this"): "Athletics"]
+  [macro("Skill@this"): "Deception"]
+  [macro("Skill@this"): "History"]
+  [macro("Skill@this"): "Insight"]
+  [macro("Skill@this"): "Intimidation"]
+  [macro("Skill@this"): "Investigation"]
+  [macro("Skill@this"): "Medicine"]
+  [macro("Skill@this"): "Nature"]
+  [macro("Skill@this"): "Perception"]
+  [macro("Skill@this"): "Performance"]
+  [macro("Skill@this"): "Persuasion"]
+  [macro("Skill@this"): "Religion"]
+  [macro("Skill@this"): "Sleight of Hand"]
+  [macro("Skill@this"): "Stealth"]
+  [macro("Skill@this"): "Survival"]
+
+  <label>SKILLS</label>
+</section>

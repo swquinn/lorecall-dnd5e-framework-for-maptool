@@ -1,0 +1,22 @@
+[h:tokenId=currentToken()]
+[h:currentHitPoints=getProperty("CurrentHitPoints")]
+[h:maximumHitPoints=getProperty("MaximumHitPoints")]
+
+[h:currentHitPointsLabelField="currentLabel|Current HP|0|label|span=true"]
+[h:currentHitPointsTextField=strformat("current|%{currentHitPoints}|0|text|span=true width=32")]
+
+[h:maximumHitPointsLabelField="maxLabel|Maximum HP|0|label|span=true"]
+[h:maximumHitPointsTextField=strformat("maximum|%{maximumHitPoints}|0|text|span=true width=32")]
+
+[h:abort(
+  input(
+    currentHitPointsLabelField,
+    currentHitPointsTextField,
+    maximumHitPointsLabelField,
+    maximumHitPointsTextField
+  )
+)]
+[h:setProperty("CurrentHitPoints", current, tokenId)]
+[h:setProperty("MaximumHitPoints", maximum, tokenId)]
+
+[macro("Refresh@this"): token.name]

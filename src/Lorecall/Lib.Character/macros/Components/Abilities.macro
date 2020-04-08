@@ -1,0 +1,9 @@
+[h:tokenId=currentToken()]
+
+<section class="cs-abilities">
+  [macro("Stats@Lib:Character"): tokenId]
+  [macro("SavingThrows@Lib:Character"): tokenId]
+  [macro("Skills@Lib:Character"): tokenId]
+  [macro("ProficiencyBonus@Lib:Character"): tokenId]
+  [macro("PassivePerception@Lib:Character"): tokenId]
+</section>

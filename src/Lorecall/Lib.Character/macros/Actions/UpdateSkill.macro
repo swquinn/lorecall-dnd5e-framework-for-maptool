@@ -1,0 +1,25 @@
+[h:skill=getStrProp(macro.args, "skill")]
+[h:proficiency=getStrProp(macro.args, "proficiency")]
+
+[h:propertyData=getProperty("Skills")]
+[h,if(json.length(propertyData)<1), CODE: {
+  [h:propertyData='{}']
+};{}]
+
+[if(proficiency=="Not Proficienct"), CODE: {
+  [h:proficiency="NOT_PROFICIENT"]
+};{}]
+[if(proficiency=="Proficient"), CODE: {
+  [h:proficiency="PROFICIENT"]
+};{}]
+[if(proficiency=="Expert"), CODE: {
+  [h:proficiency="EXPERT"]
+};{}]
+
+
+[h:skillObject=json.set("{}",
+  "skill", skill,
+  "proficiency", proficiency
+)]
+[h:propertyData=json.set(propertyData, skill, skillObject)]
+[h:setProperty("Skills", propertyData,currentToken())]

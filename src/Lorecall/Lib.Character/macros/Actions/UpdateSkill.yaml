@@ -1,0 +1,6 @@
+macro:
+  label: UpdateSkill
+  group: Actions
+  auto_execute: False
+  options:
+    allow_players_to_edit_macro: False

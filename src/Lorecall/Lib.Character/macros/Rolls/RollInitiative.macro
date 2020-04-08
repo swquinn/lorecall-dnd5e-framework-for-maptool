@@ -1,0 +1,17 @@
+[h:value = macro.args]
+[h:color = "#7094db"]
+
+[h:initiativeRoll = 1d20]
+
+<table style="border:1px solid [r:string(color)]; width: 170px;">
+  <tr>
+    <td style="padding: 0px 2px; background-color:[r:string(color)]; color: #ffffff">
+      <strong>Initiative:</strong> 1d20 [r:if(value<0,value,"+ "+value)]
+    </td>
+  </tr>
+  <tr class="vertical-align: middle;">
+    <td style="margin: 5px 0px; text-align: center;">
+      <span style="color: [r:string(color)]; font-size: 24pt;"><strong>[r: initiativeRoll+value]</strong></span>
+    </td>
+  </tr>
+</table>

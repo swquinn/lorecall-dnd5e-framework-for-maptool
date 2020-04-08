@@ -1,0 +1,12 @@
+[h:group="Attacks"]
+[h:tokenId=arg(0)]
+
+[h:macroIndices=getMacroGroup(group, ",", tokenId)]
+[h:attacks='[]']
+[h,token(tokenId),foreach(index, macroIndices), CODE: {
+  [h:macroJson='{}']
+
+  [h:macroProps=getMacroProps(index, "json")]
+  [h:attacks=json.append(attacks,macroProps)]
+}]
+[h:macro.return=attacks]

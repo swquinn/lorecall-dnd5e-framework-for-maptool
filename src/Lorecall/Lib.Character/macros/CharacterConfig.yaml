@@ -1,0 +1,8 @@
+macro:
+  label: CharacterConfig
+  group: ~
+  auto_execute: False
+  min_width: 210
+  sort_by: 3
+  options:
+    allow_players_to_edit_macro: False

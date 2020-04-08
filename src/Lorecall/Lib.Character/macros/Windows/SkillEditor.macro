@@ -1,0 +1,29 @@
+[h:skill=macro.args]
+[h:skillName=json.get(skill, "skill")]
+[h:skillProficiency=json.get(skill, "proficiency")]
+
+[h:selectedProficiencyIndex=0]
+[if(skillProficiency=="PROFICIENT"), CODE: {
+  [h:selectedProficiencyIndex=1]
+};{}]
+[if(skillProficiency=="EXPERT"), CODE: {
+  [h:selectedProficiencyIndex=2]
+};{}]
+
+[h:skillField=strformat("skillLabel|%{skillName}|Skill|label")]
+[h:proficiencyField=strformat(
+  "proficiency|"+
+  "Not Proficient,Proficient,Expert|"+
+  "Proficiency|"+
+  "list|"+
+  "value=string select=%{selectedProficiencyIndex}"
+)]
+
+[h:abort(input(skillField, proficiencyField))]
+
+[h:args=""]
+[h:args=setStrProp(args, "skill", skillName)]
+[h:args=setStrProp(args, "proficiency", proficiency)]
+
+[macro("UpdateSkill@this"): args]
+[macro("Refresh@this"): token.name]

@@ -1,0 +1,8 @@
+[h:tokenId=currentToken()]
+[h:iteratorCount=getStrProp(macro.args, "count")]
+[h:deathSaveProperty=getStrProp(macro.args, "property")]
+
+[h,if(iteratorCount==""): iteratorCount=0]
+[h:setProperty(deathSaveProperty, iteratorCount, tokenId)]
+
+[macro("Refresh@this"): token.name]

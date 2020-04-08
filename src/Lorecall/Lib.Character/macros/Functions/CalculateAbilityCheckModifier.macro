@@ -1,0 +1,32 @@
+[h:skill=arg(0)]
+[h:skillAbility=arg(1)]
+
+[h:proficiencyBonus=character.getProficiencyBonus()]
+[h:skillAbilityScore=getProperty(skillAbility)]
+[h:skillAbilityScoreModifier=character.getAbilityScoreModifier(skillAbilityScore)]
+
+[h:totalModifier=skillAbilityScoreModifier]
+
+[h:skillProficiency=json.get(skill, "proficiency")]
+[if(skillProficiency=="NOT_PROFICIENT"), CODE: {
+  [h:isJackOfAllTrades=character.hasFeature("Jack of All Trades")]
+  [h:totalModifier=add(totalModifier,
+    if(isJackOfAllTrades,
+      floor(proficiencyBonus*0.5), 0))]
+
+  [h:remarkableAthleteAbilities="Strength,Dexterity,Constitution"]
+  [h:isRemarkableAthlete=character.hasFeature("Remarkable Athlete")]
+  [h:totalModifier=add(totalModifier,
+    if(listContains(remarkableAthleteAbilities, skillAbilityScore),
+      ceil(proficiencyBonus*0.5), 0))]
+};{}]
+
+[if(skillProficiency=="PROFICIENT"), CODE: {
+  [h:totalModifier=add(totalModifier, proficiencyBonus)]
+};{}]
+
+[if(skillProficiency=="EXPERT"), CODE: {
+  [h:totalModifier=add(totalModifier, (proficiencyBonus * 2))]
+};{}]
+
+[h:macro.return=totalModifier]

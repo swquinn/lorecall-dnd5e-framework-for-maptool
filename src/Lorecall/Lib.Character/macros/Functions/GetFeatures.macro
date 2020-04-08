@@ -1,0 +1,12 @@
+[h:group="Features"]
+[h:tokenId=arg(0)]
+
+[h:macroIndices=getMacroGroup(group, ",", tokenId)]
+[h:features='[]']
+[h,token(tokenId),foreach(index, macroIndices), CODE: {
+  [h:macroJson='{}']
+
+  [h:macroProps=getMacroProps(index, "json")]
+  [h:features=json.append(features,macroProps)]
+}]
+[h:macro.return=features]

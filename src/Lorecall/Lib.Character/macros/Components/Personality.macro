@@ -1,0 +1,46 @@
+[h:tokenId=currentToken()]
+[h:personality=getProperty("Personality")]
+
+[if(json.length(personality) < 1), CODE: {
+  [h:personality=json.set("{}",
+    "traits", "",
+    "ideals", "",
+    "bonds", "",
+    "flaws", ""
+  )]
+  [h:setProperty("Personality", personality)]
+};{}]
+<section class="cs-personality">
+  <div class="traits">
+    <span class="token-property">
+      [r:json.get(personality, "traits")]
+    </span>
+    <label>
+      [r:macroLink("PERSONALITY TRAITS", "PersonalityEditor@Lib:Character", "none", "PersonalityTrait", tokenId)]
+    </label>
+  </div>
+  <div class="ideals">
+    <span class="token-property">
+      [r:json.get(personality, "ideals")]
+    </span>
+    <label>
+      [r:macroLink("IDEALS", "PersonalityEditor@Lib:Character", "none", "Ideals", tokenId)]
+    </label>
+  </div>
+  <div class="bonds">
+    <span class="token-property">
+      [r:json.get(personality, "bonds")]
+    </span>
+    <label>
+      [r:macroLink("BONDS", "PersonalityEditor@Lib:Character", "none", "Bonds", tokenId)]
+    </label>
+  </div>
+  <div class="flaws">
+    <span class="token-property">
+      [r:json.get(personality, "flaws")]
+    </span>
+    <label>
+      [r:macroLink("FLAWS", "PersonalityEditor@Lib:Character", "none", "Flaws", tokenId)]
+    </label>
+  </div>
+</section>

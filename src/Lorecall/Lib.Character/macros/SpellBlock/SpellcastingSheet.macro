@@ -1,0 +1,137 @@
+    <entry>
+      <int>76</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>10548349-3f89-4290-aed5-ddcb5ca3400f</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>76</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>
+[frame("Spellcasting Sheet - "+token.name,"width=680; height=700; temporary=1;"): {
+  <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css@[r: getMacroLocation()]">
+      <title>Spellcasting</title>
+    </head>
+    <body>
+    <table border=0 width=100% bgcolor=white>
+   <td style="border:0px;margin:0px;padding:0px">
+
+
+
+
+<table border=0 width=240>
+<tr><td style="border:0px;margin:0px;padding:0px"><font style="text-decoration:none" size=2><b>[r:macroLink("[Refresh]","Spellcasting@Token","","",token.name)]<td align=right><font size=2 face=serif bgcolor=#e6e6e6><b>D&D<tr><td colspan=2><table style="border:1px solid black;" width=100%>
+<tr><td align=center style="border:0px;margin:0px;padding:0px"><font face=serif style="text-decoration:none" size=4> <b>[r:macroLink( getProperty("Spellcasting Class"),"Change Property@Lib:Character","","Spellcasting Class",token.name)]</b></td></tr>
+</table><tr><td valign=top colspan=2 style="border:0px;margin:0px;padding:0px"><font  style="text-decoration:none" color=black size=1><b>[r:macroLink("SPELLCASTING CLASS","Change Property@Lib:Character","","Spellcasting Class",token.name)]</td></tr>
+
+</table>
+
+
+<td colspan =2 style="border:0px;margin:0px;padding:2px">
+
+<table  bgcolor=#e6e6e6 style="border:2px solid black;" width=100%>
+<td align=center style="border:0px;margin:0px;padding:2px">
+
+
+<table  bgcolor=white style="border:1px solid black;" width=80%>
+<td align=center style="border:0px;margin:0px;padding:2px">
+
+
+
+[h:ability1=listget(getProperty("SpellcastingAbility"),0,"/")]
+[h:ability2=listget(getProperty("SpellcastingAbility"),1,"/")]
+[h:ability3=listget(getProperty("SpellcastingAbility"),2,"/")]
+
+[h:spellmod1=getProperty(ability1+"mod")+getProperty("ProficiencyBonus")]
+[h:spellmod2=getProperty(ability2+"mod")+getProperty("ProficiencyBonus")]
+[h:spellmod3=getProperty(ability3+"mod")+getProperty("ProficiencyBonus")]
+
+
+<font style="text-decoration:none" size=[r:if(ability2=="",4,3)]>
+
+[r:macroLink( getProperty("SpellcastingAbility"),"Change Property@Lib:Character","","SpellcastingAbility",token.name)]
+
+</table>
+
+
+
+<font style="text-decoration:none" color=black size=1><b>
+[r:macroLink( " SPELLCASTING ABILITY","Change Property@Lib:Character","","SpellcastingAbility",token.name)]
+
+<td align=center style="border:0px;margin:0px;padding:2px">
+
+<table  bgcolor=white style="border:1px solid black;" width=90%>
+<td align=center style="border:0px;margin:0px;padding:2px">
+
+<font style="text-decoration:none" size=4>
+[r:macroLink(spellmod1+8,"CustomRoll@Lib:Character","all","dmg1="+number(spellmod1+8)+";dmgtype1="+ability1+" DC")][r:if(ability2=="","","/"+macroLink(number(spellmod2+8),"CustomRoll@Lib:Character","all","dmg1="+number(spellmod2+8)+";dmgtype1="+ability2+" DC"))][r:if(ability3=="","","/"+macroLink(number(spellmod3+8),"CustomRoll@Lib:Character","all","dmg1="+number(spellmod3+8)+";dmgtype1="+ability3+" DC"))]</table>
+<font size=1><b>SPELL SAVE DC
+
+<td align=cente style="border:0px;margin:0px;padding:2px"r>
+
+<table  bgcolor=white style="border:1px solid black;" width=80%>
+<td align=center style="border:0px;margin:0px;padding:2px">
+
+<font style="text-decoration:none" size=4>
+
+[r:macroLink(if(spellmod1<0,"","+")+spellmod1,"Attack Rolls@Lib:Character","all","atkbonus="+spellmod1+";name="+ability1+" Spell Attack",token.name)][r:if(ability2=="","","/"+macroLink(if(spellmod2<0,"","+")+spellmod2,"Attack Rolls@Lib:Character","all","atkbonus="+spellmod2+";name="+ability2+" Spell Attack",token.name))][r:if(ability3=="","","/"+macroLink(if(spellmod3<0,"","+")+spellmod3,"Attack Rolls@Lib:Character","all","atkbonus="+spellmod3+";name="+ability3+" Spell Attack",token.name))]
+
+
+</table>
+<font size=1><b>SPELL ATTACK BONUS
+
+</table>
+
+   
+  <tr>
+  <td valign=top width=240 style="border:0px;margin:0px;padding:0px">
+
+[macro("Cantrips@Lib:Character"): token.name]
+[macro("1st Level@Lib:Character"): token.name]
+[macro("2nd Level@Lib:Character"): token.name]
+
+
+<td valign=top width=50% style="border:0px;margin:0px;padding:0px">
+
+[macro("3rd Level@Lib:Character"): token.name]
+[macro("4th Level@Lib:Character"): token.name]
+[macro("5th Level@Lib:Character"): token.name]
+
+
+<td valign=top width=50% style="border:0px;margin:0px;padding:0px">
+
+[macro("6th Level@Lib:Character"): token.name]
+[macro("7th Level@Lib:Character"): token.name]
+[macro("8th Level@Lib:Character"): token.name]
+[macro("9th Level@Lib:Character"): token.name]
+
+
+   </td> 
+    
+    </table>
+    </body>
+  </html>
+} ]</command>
+        <label>Spellcasting Sheet</label>
+        <group>Blocks: Spells</group>
+        <sortby>1</sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>164</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>

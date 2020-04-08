@@ -1,0 +1,75 @@
+[h:tokenId=currentToken()]
+
+[h:alignmentEditLink=macroLinkText("SimplePropertyEditor@Lib:Character","none","Alignment",tokenId)]
+[h:classEditLink=macroLinkText("SimplePropertyEditor@Lib:Character","none","Class",tokenId)]
+[h:backgroundEditLink=macroLinkText("SimplePropertyEditor@Lib:Character","none","Background",tokenId)]
+[h:levelEditLink=macroLinkText("SimplePropertyEditor@Lib:Character","none","Level",tokenId)]
+[h:playerEditLink=macroLinkText("PlayerEditor@Lib:Character","none","",tokenId)]
+[h:raceEditLink=macroLinkText("SimplePropertyEditor@Lib:Character","none","Race",tokenId)]
+[h:expEditLink=macroLinkText("SimplePropertyEditor@Lib:Character","none","Experience",tokenId)]
+
+<section class="cs-details">
+  <div class="token-property-container class">
+    <span class="token-property">
+      [h:classText=character.getPropertyWithDefault("Class", "(No Class)")]
+      <a href="[r:classEditLink]">[r:classText]</a>
+    </span>
+    <label>
+      <a href="[r:classEditLink]">CLASS</a>
+    </label>
+  </div>
+  <div class="token-property-container background">
+    <span class="token-property">
+      [h:backgroundText=character.getPropertyWithDefault("Background", "(No Background)")]
+      <a href="[r:backgroundEditLink]">[r:backgroundText]</a>
+    </span>
+    <label>
+      <a href="[r:backgroundEditLink]">BACKGROUND</a>
+    </label>
+  </div>
+  <div class="token-property-container player">
+    <span class="token-property">
+      [h:playerText=getOwners()]
+      <a href="[r:playerEditLink]">[r:playerText]&nbsp;</a>
+    </span>
+    <label>
+      <a href="[r:playerEditLink]">PLAYER NAME</a>
+    </label>
+  </div>
+  <div class="token-property-container race">
+    <span class="token-property">
+      [h:raceText=character.getPropertyWithDefault("Race", "(No Race)")]
+      <a href="[r:raceEditLink]">[r:raceText]</a>
+    </span>
+    <label>
+      <a href="[r:raceEditLink]">RACE</a>
+    </label>
+  </div>
+  <div class="token-property-container alignment">
+    <span class="token-property">
+      [h:alignmentText=character.getPropertyWithDefault("Alignment", "(Unaligned)")]
+      <a href="[r:alignmentEditLink]">[r:alignmentText]</a>
+    </span>
+    <label>
+      <a href="[r:alignmentEditLink]">ALIGNMENT</a>
+    </label>
+  </div>
+  <div class="token-property-container experience">
+    <span class="token-property">
+      [h:expText=character.getPropertyWithDefault("Experience", "0")]
+      <a href="[r:expEditLink]">[r:expText]</a>
+    </span>
+    <label>
+      <a href="[r:expEditLink]">EXPERIENCE</a>
+    </label>
+  </div>
+  <div class="token-property-container level">
+    <span class="token-property">
+      [h:levelText=character.getPropertyWithDefault("Level", "1")]
+      <a href="[r:levelEditLink]">[r:levelText]</a>
+    </span>
+    <label>
+      <a href="[r:levelEditLink]">LEVEL</a>
+    </label>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+[h:tokenId=currentToken()]
+
+[h:property=macro.args]
+[h:propertyValue=getProperty(property, tokenId)]
+
+[h:labelField=strformat("label|%{property}|0|label|span=true")]
+[h:textField=strformat("value|%{propertyValue}|0|text|span=true width=32")]
+[h:abort(input(labelField, textField))]
+[h:setProperty(property, value, tokenId)]
+
+[macro("Refresh@this"): token.name]

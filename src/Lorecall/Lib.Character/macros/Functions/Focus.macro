@@ -1,0 +1,4 @@
+[r:selectTokens(macro.args)]
+[h: xcoord=getTokenX(0)]
+[h: ycoord=getTokenY(0)]
+[h:setViewArea(xcoord-9, ycoord-7, xcoord+9, ycoord+7 , 0 , 0)]

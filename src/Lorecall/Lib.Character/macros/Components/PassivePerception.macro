@@ -1,0 +1,9 @@
+[h:perceptionSkill=character.getSkill("Perception")]
+[h:perceptionModifier=character.calculateAbilityCheckModifier(perceptionSkill, "Wisdom")]
+
+[h:passivePerception=10 + perceptionModifier]
+
+<section class="cs-passive-perception">
+  <span>[r:passivePerception]</span>
+  <span>PASSIVE PERCEPTION</span>
+</section>

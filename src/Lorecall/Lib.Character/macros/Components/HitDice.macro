@@ -1,0 +1,13 @@
+[h:hitDice=getProperty("HitDice")]
+
+[h:editLink=macroLinkText("SimplePropertyEditor@Lib:Character", "none", "HitDice", currentToken())]
+<section class="cs-hit-dice">
+  <div class="clearfix">
+    <a href="[r:editLink]" class="edit-hit-dice">
+      <i class="icon">[r:icons.edit()]</i>
+    </a>
+  </div>
+
+  <span class="token-property">[r:hitDice]</span>
+  <label>HIT DICE</label>
+</section>

@@ -1,0 +1,20 @@
+[h:dexterityScore=getProperty("Dexterity")]
+[h:initiativeBonus=getProperty("InitiativeBonus")]
+[h:dexterityModifier=character.getAbilityScoreModifier(dexterityScore)]
+
+[h:totalInitiative=dexterityModifier + initiativeBonus]
+[h:editLink=macroLinkText("SimplePropertyEditor@this", "none", "InitiativeBonus", currentToken())]
+<section class="cs-initiative">
+  <div class="clearfix">
+    <a href="[r:editLink]" class="edit-initiative">
+      <i class="icon">[r:icons.edit()]</i>
+    </a>
+  </div>
+
+  <span class="token-property">
+    [r:if(totalInitiative>=0, strformat("+%{totalInitiative}"), totalInitiative)]
+  </span>
+  <label>
+    [r:macroLink("INITIATIVE", "RollInitiative@this", "all", totalInitiative, currentToken())]
+  </label>
+</section>

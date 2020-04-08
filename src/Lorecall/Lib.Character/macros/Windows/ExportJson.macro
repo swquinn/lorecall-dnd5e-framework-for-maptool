@@ -1,0 +1,29 @@
+[h:tokenId=currentToken()]
+
+[h:campaignPropertyNames=getAllPropertyNames("Basic")]
+[h:tokenPropertyNames=getPropertyNamesRaw(",", tokenId)]
+[h:propertyNames=listAppend(campaignPropertyNames, tokenPropertyNames)]
+[h:propertiesJson='{}']
+[foreach(name, propertyNames), CODE:
+{
+  [h:propertyValue=getProperty(name)]
+  [h:propertiesJson=json.set(propertiesJson, name, propertyValue)]
+}]
+
+[h:title=strformat("%{token.name} - Export Properties")]
+[dialog5(title, "width=800; height=600; temporary=1"): {
+<html>
+  <head>
+    <link rel="stylesheet" href="lorecall.css@[r: getMacroLocation()]" type="text/css">
+    <link rel="stylesheet" href="dnd5e.css@[r: getMacroLocation()]" type="text/css">
+    <link rel="stylesheet" href="proptable.css@[r: getMacroLocation()]" type="text/css">
+    <title>[r:title]</title>
+  </head>
+  <body>
+    <div>
+      Properties for <strong>[r:token.name]</strong> ([r:tokenId])
+    </div>
+    <textarea style="width: 100%; height:100%;">[r:json.indent(propertiesJson, 2)]</textarea>
+  </body>
+</html>
+}]

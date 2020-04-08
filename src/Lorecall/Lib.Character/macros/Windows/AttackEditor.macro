@@ -1,0 +1,22 @@
+[h:tokenId=currentToken()]
+[h:attackId=getStrProp(macro.args, "attackId")]
+[h:attackName=getStrProp(macro.args, "attackName")]
+
+[h:title=strformat("Edit Attack - %{attackName} - %{token.name}")]
+[dialog5(title, "width=450; height=450; temporary=1; input=1; closebutton=0; noframe=0"): {
+<html>
+  <head>
+  [macro("Style@Lib:Module"): "lorecall.css"]
+  [macro("Style@Lib:Module"): "dnd5e.css"]
+    <title>[r:title]</title>
+  </head>
+  <body class="attacks-editor property-editor">
+
+    [h:props=""]
+  [h:props=setStrProp(props, "attackId", attackId)]
+  [h:props=setStrProp(props, "tokenId", tokenId)]
+  [h:props=setStrProp(props, "dialogTitle", title)]
+  [macro("NewAttackForm@this"): props]
+  </body>
+</html>
+}]

@@ -1,0 +1,116 @@
+[h:tokenId=getStrProp(macro.args, "tokenId")]
+[h:attackId=getStrProp(macro.args, "attackId")]
+
+[h:attacks=getProperty("Attacks")]
+[h:attack=json.get(attacks, attackId)]
+[s,if(json.isEmpty(attack)), CODE: {
+  Unable to find attack with ID: [r:attackId]
+  [abort(0)]
+};{}]
+
+<!-- styles -->
+[h:color = "#660000"]
+[h:criticalSuccessColor = "#009933"]
+[h:criticalFailureColor = "#ff0000"]
+[h:rollTableStyle=strformat("border:1px solid %{color}; width: 180px;")]
+[h:attackIdentifierStyle=strformat("padding: 0px 2px; background-color: %{color}; color: #ffffff")]
+[h:marginPaddingResetStyle="margin: 0px; padding: 0px;"]
+
+<!-- Roll data -->
+[h:attackName=json.get(attack, "name")]
+[h:attackType=json.get(attack, "type")]
+[h:attackCritical=json.get(attack, "critical")]
+[h,if(attackCritical==""): attackCritical=20]
+[h:attackRange=json.get(attack, "range")]
+[h:attackModifier=json.get(attack, "modifier")]
+[h:attackModifierDisplay=attackModifier]
+[h,if(attackModifier>=0):
+  attackModifierDisplay=strformat("+ %{attackModifier}"),
+  attackModifierDisplay=strformat("- %{abs(attackModifier)}")
+]
+
+<!-- Rolls -->
+[h:firstRoll = 1d20]
+[h:firstRollResult = firstRoll + attackModifier]
+[h:secondRoll = 1d20]
+[h:secondRollResult = secondRoll + attackModifier]
+
+[h:advantage=if(firstRoll>=secondRoll,
+  firstRoll + attackModifier,
+  secondRoll + attackModifier
+)]
+[h:disadvantage=if(firstRoll>=secondRoll,
+  secondRoll + attackModifier,
+  firstRoll + attackModifier
+)]
+
+<table style="[r:rollTableStyle]">
+  <tr>
+    <td colspan="2" style="[r:attackIdentifierStyle]">
+      <div style="[r:marginPaddingResetStyle]">
+        <strong>[r:attackName]</strong>
+        [if(attackType!="Saving Throw"), CODE: {
+          <span>
+            ([r:firstRoll+" / "+secondRoll] [r:attackModifierDisplay])
+          </span>
+        };{}]
+      </div>
+      <div style="[r:marginPaddingResetStyle]">
+        [if(attackType!=""), CODE: {
+          <em>[r:attackType]</em>
+        }]
+        [if(attackRange!=""), CODE: {
+          ([r:attackRange])
+        }]
+      </div>
+    </td>
+  </tr>
+
+  [if(attackType!="Saving Throw"), CODE: {
+    [h:attackRollColor="#333333"]
+    [h,if(firstRoll==1): attackRollColor=criticalFailureColor]
+    [h,if(firstRoll>=attackCritical): attackRollColor=criticalSuccessColor]
+    <tr class="vertical-align: middle;">
+      <td style="margin: 5px 0px; text-align: center;">
+        <span style="color: [r:string(attackRollColor)]; font-size: 24pt;">
+          <strong>
+            [r: firstRoll+attackModifier][r,if(firstRoll>=attackCritical): "!"]
+          </strong>
+        </span>
+      </td>
+      <td style="margin: 7px 0px 3px;">
+        <div style="color: #797979; font-size: 10pt; [r:marginPaddingResetStyle]">
+          <label>Adv:</label>
+          <span>[r:advantage]</span>
+        </div>
+        <div style="color: #797979; font-size: 10pt; [r:marginPaddingResetStyle]">
+          <label>Dis:</label>
+          <span>[r:disadvantage]</span>
+        </div>
+      </td>
+    </tr>
+  }; {
+    [h:attackSavingThrow=json.get(attack, "savingThrow")]
+    [h:attackSavingThrowDC=json.get(attack, "savingThrowDC")]
+    <tr class="vertical-align: middle;">
+      <td colspan="2" style="margin: 5px 0px; text-align: center;">
+        <div style="[r:marginPaddingResetStyle]">
+          <strong style="color: #333333; font-size: 24pt;">
+            DC [r: attackSavingThrowDC]
+          </strong>
+        </div>
+        <div style="[r:marginPaddingResetStyle]">
+          <span style="color: #797979;">[r: attackSavingThrow]</span>
+        </div>
+      </td>
+    </tr>
+  }]
+  <tr>
+    <td colspan="2" style="background-color: #cdcdcd; text-align: center;">
+      <label>
+        [h:rollDamageAction=macroLinkText("RollDamage@Lib:Character", "all", attackId, tokenId)]
+        <a href="[r:rollDamageAction]" title="">Roll Damage</a>
+      </label>
+    </td>
+  </tr>
+</table>

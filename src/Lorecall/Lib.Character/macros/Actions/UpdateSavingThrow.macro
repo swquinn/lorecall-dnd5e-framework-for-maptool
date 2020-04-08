@@ -1,0 +1,28 @@
+[h:savingThrow=getStrProp(macro.args, "savingThrow")]
+[h:savingThrowAbility=getStrProp(macro.args, "ability")]
+[h:proficiency=getStrProp(macro.args, "proficiency")]
+
+[h:propertyName="SavingThrows"]
+[h:propertyData=getProperty(propertyName)]
+[h,if(json.length(propertyData)<1), CODE: {
+  [h:propertyData='{}']
+};{}]
+
+[if(proficiency=="Not Proficienct"), CODE: {
+  [h:proficiency="NOT_PROFICIENT"]
+};{}]
+[if(proficiency=="Proficient"), CODE: {
+  [h:proficiency="PROFICIENT"]
+};{}]
+[if(proficiency=="Expert"), CODE: {
+  [h:proficiency="EXPERT"]
+};{}]
+
+
+[h:savingThrowObject=json.set("{}",
+  "savingThrow", savingThrow,
+  "ability", savingThrowAbility,
+  "proficiency", proficiency
+)]
+[h:propertyData=json.set(propertyData, savingThrow, savingThrowObject)]
+[h:setProperty(propertyName, propertyData,currentToken())]

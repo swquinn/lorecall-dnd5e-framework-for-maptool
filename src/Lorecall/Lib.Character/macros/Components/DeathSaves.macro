@@ -1,0 +1,77 @@
+[h:tokenId=currentToken()]
+[h:successes=getProperty("DeathSaveSuccesses")]
+[h,if(successes==""), CODE: {
+  [h:successes=0]
+  [h:setProperty("DeathSaveSuccesses", successes, tokenId)]
+}]
+
+[h:failures=getProperty("DeathSaveFailures")]
+[h,if(failures==""), CODE: {
+  [h:failures=0]
+  [h:setProperty("DeathSaveFailures", failures, tokenId)]
+}]
+
+[h:successArgs=""]
+[h:successArgs=setStrProp(successArgs, "property", "DeathSaveSuccesses")]
+
+[h:failureArgs=""]
+[h:failureArgs=setStrProp(failureArgs, "property", "DeathSaveFailures")]
+
+<section class="cs-death-saves">
+  <div class="successes">
+    <label>Successes</label>
+    <span class="death-save-marks">
+      [h:successArgs=setStrProp(successArgs, "count", 0)]
+      [h:link=macroLinkText("UpdateDeathSaves@Lib:Character", "none", successArgs, tokenId)]
+      <a href="[r:link]">
+        <i class="icon">[r:icons.cross()]</i>
+      </a>
+
+      [h:successArgs=setStrProp(successArgs, "count", 1)]
+      [h:link=macroLinkText("UpdateDeathSaves@Lib:Character", "none", successArgs, tokenId)]
+      <a href="[r:link]">
+        <i class="icon">[r:if(successes>0, icons.circleSolid(), icons.circle())]</i>
+      </a>
+
+      [h:successArgs=setStrProp(successArgs, "count", 2)]
+      [h:link=macroLinkText("UpdateDeathSaves@Lib:Character", "none", successArgs, tokenId)]
+      <a href="[r:link]">
+        <i class="icon">[r:if(successes>1, icons.circleSolid(), icons.circle())]</i>
+      </a>
+
+      [h:successArgs=setStrProp(successArgs, "count", 3)]
+      [h:link=macroLinkText("UpdateDeathSaves@Lib:Character", "none", successArgs, tokenId)]
+      <a href="[r:link]">
+        <i class="icon">[r:if(successes>2, icons.circleSolid(), icons.circle())]</i>
+      </a>
+    </span>
+  </div>
+  <div class="failures">
+    <label>Failures</label>
+    <span class="death-save-marks">
+      [h:failureArgs=setStrProp(failureArgs, "count", 0)]
+      [h:link=macroLinkText("UpdateDeathSaves@Lib:Character", "none", failureArgs, tokenId)]
+      <a href="[r:link]">
+        <i class="icon">[r:icons.cross()]</i>
+      </a>
+
+      [h:failureArgs=setStrProp(failureArgs, "count", 1)]
+      [h:link=macroLinkText("UpdateDeathSaves@Lib:Character", "none", failureArgs, tokenId)]
+      <a href="[r:link]">
+        <i class="icon">[r:if(failures>0, icons.circleSolid(), icons.circle())]</i>
+      </a>
+
+      [h:failureArgs=setStrProp(failureArgs, "count", 2)]
+      [h:link=macroLinkText("UpdateDeathSaves@Lib:Character", "none", failureArgs, tokenId)]
+      <a href="[r:link]">
+        <i class="icon">[r:if(failures>1, icons.circleSolid(), icons.circle())]</i>
+      </a>
+
+      [h:failureArgs=setStrProp(failureArgs, "count", 3)]
+      [h:link=macroLinkText("UpdateDeathSaves@Lib:Character", "none", failureArgs, tokenId)]
+      <a href="[r:link]">
+        <i class="icon">[r:if(failures>2, icons.circleSolid(), icons.circle())]</i>
+      </a>
+    </span>
+  </div>
+</section>

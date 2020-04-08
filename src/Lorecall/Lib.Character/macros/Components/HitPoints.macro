@@ -1,0 +1,31 @@
+[h:maximumHitPoints=getProperty("MaximumHitPoints")]
+[h:currentHitPoints=getProperty("CurrentHitPoints")]
+[h:tempHitPoints=getProperty("TemporaryHitPoints")]
+
+[h:editHitPointsLink=macroLinkText("HealthEditor@this", "", "", currentToken())]
+[h:editTempHitPointsLink=macroLinkText("SimplePropertyEditor@this", "", "TemporaryHitPoints", currentToken())]
+<section class="cs-hitpoints">
+
+  <div class="current-and-maximum-hp">
+    <div class="clearfix">
+      <a href="[r:editHitPointsLink]" class="edit-hp">
+        <i class="icon">[r:icons.edit()]</i>
+      </a>
+    </div>
+
+    <span class="token-property">[r:currentHitPoints] / [r:maximumHitPoints]</span>
+    <label>CURRENT HIT POINTS</label>
+  </div>
+
+  <div class="temporary-hp">
+    <div class="clearfix">
+      <a href="[r:editTempHitPointsLink]" class="edit-temp-hp">
+        <i class="icon">[r:icons.edit()]</i>
+      </a>
+    </div>
+
+    <span class="token-property">[r:tempHitPoints]</span>
+    <label>TEMPORARY HIT POINTS</label>
+  </div>
+
+</section>

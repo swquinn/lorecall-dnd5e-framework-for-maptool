@@ -1,0 +1,2 @@
+[h:tokenId=currentToken()]
+[h,token(tokenId),macro("Character@TOKEN"): getSelectedNames()]

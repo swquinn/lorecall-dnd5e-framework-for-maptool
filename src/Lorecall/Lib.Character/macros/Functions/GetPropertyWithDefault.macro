@@ -1,0 +1,7 @@
+[h:property=arg(0)]
+[h:defaultValue=arg(1)]
+[h:tokenId=currentToken()]
+
+[h:value=getProperty(property, tokenId)]
+[h:value=if(value=="", defaultValue, value)]
+[h:macro.return=value]

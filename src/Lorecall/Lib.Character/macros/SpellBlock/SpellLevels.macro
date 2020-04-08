@@ -1,0 +1,1234 @@
+    <entry>
+      <int>66</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>42cac5e6-c855-4776-937d-92dfcf6444c5</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>66</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:GenericID=findToken(token.name)]
+[h:BasicMacros=getMacros(",",GenericID)]
+[h:BasicMacros=listSort(BasicMacros, "A")]
+[h:cantrips=""]
+
+
+[h,count(listCount(BasicMacros)),code:{
+  
+  [h:CurrentMacro=listGet(BasicMacros,roll.count)]
+  [h:CurrentMacroIndex=getMacroIndexes(CurrentMacro,",",GenericID)]
+  [h:CurrentMacroProps=getMacroProps(CurrentMacroIndex,",",GenericID)]
+  
+[h: group=getStrProp(CurrentMacroProps, "group","",",")]
+[h: label=getStrProp(CurrentMacroProps, "label","",",")]
+[h: CurrentFeatureName=if(group=="Spells: 0 (Cantrip)",label,"")]
+[h: cantrips=listAppend(cantrips, CurrentFeatureName)]
+[h:empty=listFind(cantrips, "")]
+[r:cantrips=listDelete(cantrips, empty)]
+
+
+
+}]
+
+[h:cantrips=listDelete(cantrips, listFind(cantrips, "Spells"))]
+
+<table style="border:1px solid silver;margin:2px" bgcolor=white width=100%>
+
+
+
+
+
+    <td align=center colspan=2 style="border:0px;margin:0px;padding:0px">
+
+    
+<table border=1 width=100%>
+ <td width=30px><b>
+ 
+ <font  style="text-decoration:none"  size=2> 
+ 0  [r:macroLink( "[+]","Create Spell@Lib:Character","",0,token.name)]
+ 
+ </b> <td align=center>
+<font  style="text-decoration:none"  size=2><b>CANTRIPS
+  
+</table>
+
+  <tr>
+
+
+
+
+[r,count(listCount(cantrips),""),code:{
+  
+<td style="border:0px;margin:0px;padding:0px">
+
+<font color=gray face=serif style="text-decoration:none" size=2>
+[r:if(listGet(cantrips, roll.count)=="","",macroLink("<i>(i)</i>","share@Lib:Character","all",listGet(cantrips, roll.count),findToken(token.name)))]
+</font>
+<font  style="text-decoration:none" size=2>
+[r:macroLink(listGet(cantrips, roll.count),"popup@Lib:Character","",listGet(cantrips, roll.count),findToken(token.name))]
+</font>
+
+
+
+
+<font color=gray face=serif style="text-decoration:none" size=2>
+<td width=1% align=right style="border:0px;margin:0px;padding:0px">
+[h:delete=getMacroIndexes(listGet(cantrips, roll.count),",",GenericID)]
+[h:remove=if(listGet(cantrips, roll.count)=="","","X")]
+<font  style="text-decoration:none" color=red size=2>
+[r:macroLink( remove,"Remove Macros@Lib:Character","",delete,token.name)]
+</font>
+<tr>
+
+
+}]
+
+
+
+
+
+
+    </table></command>
+        <label>Cantrips</label>
+        <group>Blocks: Spells</group>
+        <sortby></sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>75</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+
+    <entry>
+      <int>58</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>2078ebfa-8e91-476c-a480-2aa1295166c7</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>58</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:GenericID=findToken(token.name)]
+[h:BasicMacros=getMacros(",",GenericID)]
+[h:BasicMacros=listSort(BasicMacros, "A")]
+[h:lvl1=""]
+
+
+[h,count(listCount(BasicMacros)),code:{
+  
+  [h:CurrentMacro=listGet(BasicMacros,roll.count)]
+  [h:CurrentMacroIndex=getMacroIndexes(CurrentMacro,",",GenericID)]
+  [h:CurrentMacroProps=getMacroProps(CurrentMacroIndex,",",GenericID)]
+  
+[h: group=getStrProp(CurrentMacroProps, "group","",",")]
+[h: label=getStrProp(CurrentMacroProps, "label","",",")]
+[h: CurrentFeatureName=if(group=="Spells: 1st Level",label,"")]
+[h: lvl1=listAppend(lvl1, CurrentFeatureName)]
+[h:empty=listFind(lvl1, "")]
+[r:lvl1=listDelete(lvl1, empty)]
+
+
+
+}]
+[h:lvl1=listDelete(lvl1, listFind(lvl1, "Slots lvl 1"))]
+
+<table  style="border:1px solid silver;margin:2px"  bgcolor=white width=100%>
+
+
+
+
+<td width=20px style="border:0px;margin:0px;padding:0px"><font color=gray size=1>
+LEVEL
+<td width=50px align=center style="border:0px;margin:0px;padding:0px"><font color=gray size=1>
+SLOTS
+<td colspan=2 align=center style="border:0px;margin:0px;padding:0px"><font color=gray size=1>
+SLOTS EXPENDED
+
+<tr>
+    <td align=center colspan=4 style="border:0px;margin:0px;padding:0px">
+
+    
+<table border=1 width=100%>
+ <td width=30px>
+ 
+ <b>
+ <font  style="text-decoration:none"  size=2> 
+ 1  [r:macroLink( "[+]","Create Spell@Lib:Character","",1,token.name)]
+ </b>
+ <td align=center width=50px>
+
+ <font  style="text-decoration:none"  size=2>
+[r:macroLink( getProperty("Slots lvl 1 Total"),"Change Property@Lib:Character","","Slots lvl 1 Total",token.name)]
+
+ <td align=center>
+<font  style="text-decoration:none"  size=2><b>
+
+[r:macroLink( getProperty("Slots lvl 1"),"Slots lvl 1@Token","all","",token.name)]
+
+  
+</table>
+
+  <tr style="border:0px;margin:0px;padding:0px">
+
+
+
+<td colspan=1 style="border:0px;margin:0px;padding:0px">
+<font  color=gray  size=1>
+PREP.
+<td colspan=3 align=left style="border:0px;margin:0px;padding:0px">
+<font  color=gray  size=1>
+SPELL NAME
+
+<tr>
+
+
+[r,count(listCount(lvl1),""),code:{
+
+
+<td align=center style="border:0px;margin:0px;padding:0px">
+
+
+[h:prepared=if(getProperty(listGet(lvl1, roll.count)+"Prepared")==1,"X","O")]
+<font color=black  style="text-decoration:none" size=2>
+[r:macroLink(prepared,"Change Prepared@Lib:Character","self",listGet(lvl1, roll.count),findToken(token.name))]
+
+
+<td colspan=2 style="border:0px;margin:0px;padding:0px">
+<font color=gray face=serif style="text-decoration:none" size=2>
+[r:if(listGet(lvl1, roll.count)=="","",macroLink("<i>(i)</i>","share@Lib:Character","all",listGet(lvl1, roll.count),findToken(token.name)))]
+</font>
+<font  style="text-decoration:none" size=2>
+[r:macroLink(listGet(lvl1, roll.count),"popup@Lib:Character","",listGet(lvl1, roll.count),findToken(token.name))]
+</font>
+<font color=gray face=serif style="text-decoration:none" size=2>
+<td width=1% align=right style="border:0px;margin:0px;padding:0px">
+[h:delete=getMacroIndexes(listGet(lvl1, roll.count),",",GenericID)]
+[h:remove=if(listGet(lvl1, roll.count)=="","","X")]
+<font  style="text-decoration:none" color=red size=2>
+[r:macroLink( remove,"Remove Macros@Lib:Character","",delete,token.name)]
+</font>
+<tr>
+
+
+}]
+
+
+    </table></command>
+        <label>1st Level</label>
+        <group>Blocks: Spells</group>
+        <sortby></sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>75</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+
+    
+<entry>
+      <int>68</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>8945425b-86c0-4ed1-910c-7c4dbc4a70ea</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>68</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:GenericID=findToken(token.name)]
+[h:BasicMacros=getMacros(",",GenericID)]
+[h:BasicMacros=listSort(BasicMacros, "A")]
+[h:lvl2=""]
+
+
+[h,count(listCount(BasicMacros)),code:{
+  
+  [h:CurrentMacro=listGet(BasicMacros,roll.count)]
+  [h:CurrentMacroIndex=getMacroIndexes(CurrentMacro,",",GenericID)]
+  [h:CurrentMacroProps=getMacroProps(CurrentMacroIndex,",",GenericID)]
+  
+[h: group=getStrProp(CurrentMacroProps, "group","",",")]
+[h: label=getStrProp(CurrentMacroProps, "label","",",")]
+[h: CurrentFeatureName=if(group=="Spells: 2nd Level",label,"")]
+[h: lvl2=listAppend(lvl2, CurrentFeatureName)]
+[h:empty=listFind(lvl2, "")]
+[r:lvl2=listDelete(lvl2, empty)]
+
+
+
+}]
+[h:lvl2=listDelete(lvl2, listFind(lvl2, "Slots lvl 2"))]
+
+<table style="border:1px solid silver;margin:2px"   bgcolor=white width=100%>
+
+
+
+<tr>
+    <td align=center colspan=4 style="border:0px;margin:0px;padding:0px">
+
+    
+<table border=1 width=100%>
+ <td width=30px>
+ 
+ <b>
+ <font  style="text-decoration:none"  size=2> 
+ 2  [r:macroLink( "[+]","Create Spell@Lib:Character","",2,token.name)]
+ </b>
+ <td align=center width=50px>
+
+ <font  style="text-decoration:none"  size=2>
+[r:macroLink( getProperty("Slots lvl 2 Total"),"Change Property@Lib:Character","","Slots lvl 2 Total",token.name)]
+
+ <td align=center>
+<font  style="text-decoration:none"  size=2><b>
+
+[r:macroLink( getProperty("Slots lvl 2"),"Slots lvl 2@Token","all","",token.name)]
+
+  
+</table>
+
+  <tr>
+
+
+
+
+
+
+
+[r,count(listCount(lvl2),""),code:{
+
+
+<td width=1% align=center style="border:0px;margin:0px;padding:0px">
+
+
+[h:prepared=if(getProperty(listGet(lvl2, roll.count)+"Prepared")==1,"X","O")]
+<font color=black  style="text-decoration:none" size=2>
+[r:macroLink(prepared,"Change Prepared@Lib:Character","self",listGet(lvl2, roll.count),findToken(token.name))]
+
+
+
+<td colspan=2 style="border:0px;margin:0px;padding:0px">
+<font color=gray face=serif style="text-decoration:none" size=2>
+[r:if(listGet(lvl2, roll.count)=="","",macroLink("<i>(i)</i>","share@Lib:Character","all",listGet(lvl2, roll.count),findToken(token.name)))]
+</font>
+<font  style="text-decoration:none" size=2>
+[r:macroLink(listGet(lvl2, roll.count),"popup@Lib:Character","",listGet(lvl2, roll.count),findToken(token.name))]
+</font>
+<font color=gray face=serif style="text-decoration:none" size=2>
+<td width=1% align=right style="border:0px;margin:0px;padding:0px">
+[h:delete=getMacroIndexes(listGet(lvl2, roll.count),",",GenericID)]
+[h:remove=if(listGet(lvl2, roll.count)=="","","X")]
+<font  style="text-decoration:none" color=red size=2>
+[r:macroLink( remove,"Remove Macros@Lib:Character","",delete,token.name)]
+</font>
+<tr>
+
+
+}]
+
+
+    </table></command>
+        <label>2nd Level</label>
+        <group>Blocks: Spells</group>
+        <sortby></sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>75</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>69</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>ffce9a9a-b68b-4c6a-b2ad-00ac6711ac7a</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>69</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:GenericID=findToken(token.name)]
+[h:BasicMacros=getMacros(",",GenericID)]
+[h:BasicMacros=listSort(BasicMacros, "A")]
+[h:lvl3=""]
+
+
+[h,count(listCount(BasicMacros)),code:{
+  
+  [h:CurrentMacro=listGet(BasicMacros,roll.count)]
+  [h:CurrentMacroIndex=getMacroIndexes(CurrentMacro,",",GenericID)]
+  [h:CurrentMacroProps=getMacroProps(CurrentMacroIndex,",",GenericID)]
+  
+[h: group=getStrProp(CurrentMacroProps, "group","",",")]
+[h: label=getStrProp(CurrentMacroProps, "label","",",")]
+[h: CurrentFeatureName=if(group=="Spells: 3rd Level",label,"")]
+[h: lvl3=listAppend(lvl3, CurrentFeatureName)]
+[h:empty=listFind(lvl3, "")]
+[r:lvl3=listDelete(lvl3, empty)]
+
+
+
+}]
+[h:lvl3=listDelete(lvl3, listFind(lvl3, "Slots lvl 3"))]
+
+<table style="border:1px solid silver;margin:2px"   bgcolor=white width=100%>
+
+
+
+<tr>
+    <td align=center colspan=4 style="border:0px;margin:0px;padding:0px">
+
+    
+<table border=1 width=100%>
+ <td width=30px>
+ 
+ <b>
+ <font  style="text-decoration:none"  size=2> 
+ 3  [r:macroLink( "[+]","Create Spell@Lib:Character","",3,token.name)]
+ </b>
+ <td align=center width=50px>
+
+ <font  style="text-decoration:none"  size=2>
+[r:macroLink( getProperty("Slots lvl 3 Total"),"Change Property@Lib:Character","","Slots lvl 3 Total",token.name)]
+
+ <td align=center>
+<font  style="text-decoration:none"  size=2><b>
+
+[r:macroLink( getProperty("Slots lvl 3"),"Slots lvl 3@Token","all","",token.name)]
+
+  
+</table>
+
+  <tr>
+
+
+
+
+
+
+
+[r,count(listCount(lvl3),""),code:{
+
+
+<td width=1% align=center style="border:0px;margin:0px;padding:0px">
+
+
+[h:prepared=if(getProperty(listGet(lvl3, roll.count)+"Prepared")==1,"X","O")]
+<font color=black  style="text-decoration:none" size=2>
+[r:macroLink(prepared,"Change Prepared@Lib:Character","self",listGet(lvl3, roll.count),findToken(token.name))]
+
+
+
+<td colspan=2 style="border:0px;margin:0px;padding:0px">
+<font color=gray face=serif style="text-decoration:none" size=2>
+[r:if(listGet(lvl3, roll.count)=="","",macroLink("<i>(i)</i>","share@Lib:Character","all",listGet(lvl3, roll.count),findToken(token.name)))]
+</font>
+<font  style="text-decoration:none" size=2>
+[r:macroLink(listGet(lvl3, roll.count),"popup@Lib:Character","",listGet(lvl3, roll.count),findToken(token.name))]
+</font>
+<font color=gray face=serif style="text-decoration:none" size=2>
+<td width=1% align=right style="border:0px;margin:0px;padding:0px">
+[h:delete=getMacroIndexes(listGet(lvl3, roll.count),",",GenericID)]
+[h:remove=if(listGet(lvl3, roll.count)=="","","X")]
+<font  style="text-decoration:none" color=red size=2>
+[r:macroLink( remove,"Remove Macros@Lib:Character","",delete,token.name)]
+</font>
+<tr>
+
+
+}]
+
+
+    </table></command>
+        <label>3rd Level</label>
+        <group>Blocks: Spells</group>
+        <sortby></sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>75</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>70</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>7ead809b-f5d0-4517-96df-634469f7afce</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>70</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:GenericID=findToken(token.name)]
+[h:BasicMacros=getMacros(",",GenericID)]
+[h:BasicMacros=listSort(BasicMacros, "A")]
+[h:lvl4=""]
+
+
+[h,count(listCount(BasicMacros)),code:{
+  
+  [h:CurrentMacro=listGet(BasicMacros,roll.count)]
+  [h:CurrentMacroIndex=getMacroIndexes(CurrentMacro,",",GenericID)]
+  [h:CurrentMacroProps=getMacroProps(CurrentMacroIndex,",",GenericID)]
+  
+[h: group=getStrProp(CurrentMacroProps, "group","",",")]
+[h: label=getStrProp(CurrentMacroProps, "label","",",")]
+[h: CurrentFeatureName=if(group=="Spells: 4th Level",label,"")]
+[h: lvl4=listAppend(lvl4, CurrentFeatureName)]
+[h:empty=listFind(lvl4, "")]
+[r:lvl4=listDelete(lvl4, empty)]
+
+
+
+}]
+[h:lvl4=listDelete(lvl4, listFind(lvl4, "Slots lvl 4"))]
+
+<table style="border:1px solid silver;margin:2px"   bgcolor=white width=100%>
+
+
+
+<tr>
+    <td align=center colspan=4 style="border:0px;margin:0px;padding:0px">
+
+    
+<table border=1 width=100%>
+ <td width=30px>
+ 
+ <b>
+ <font  style="text-decoration:none"  size=2> 
+ 4  [r:macroLink( "[+]","Create Spell@Lib:Character","",4,token.name)]
+ </b>
+ <td align=center width=50px>
+
+ <font  style="text-decoration:none"  size=2>
+[r:macroLink( getProperty("Slots lvl 4 Total"),"Change Property@Lib:Character","","Slots lvl 4 Total",token.name)]
+
+ <td align=center>
+<font  style="text-decoration:none"  size=2><b>
+
+[r:macroLink( getProperty("Slots lvl 4"),"Slots lvl 4@Token","all","",token.name)]
+
+  
+</table>
+
+  <tr>
+
+
+
+
+
+
+
+[r,count(listCount(lvl4),""),code:{
+
+
+<td width=1% align=center style="border:0px;margin:0px;padding:0px">
+
+
+[h:prepared=if(getProperty(listGet(lvl4, roll.count)+"Prepared")==1,"X","O")]
+<font color=black  style="text-decoration:none" size=2>
+[r:macroLink(prepared,"Change Prepared@Lib:Character","self",listGet(lvl4, roll.count),findToken(token.name))]
+
+
+
+<td colspan=2 style="border:0px;margin:0px;padding:0px">
+<font color=gray face=serif style="text-decoration:none" size=2>
+[r:if(listGet(lvl4, roll.count)=="","",macroLink("<i>(i)</i>","share@Lib:Character","all",listGet(lvl4, roll.count),findToken(token.name)))]
+</font>
+<font  style="text-decoration:none" size=2>
+[r:macroLink(listGet(lvl4, roll.count),"popup@Lib:Character","",listGet(lvl4, roll.count),findToken(token.name))]
+</font>
+<font color=gray face=serif style="text-decoration:none" size=2>
+<td width=1% align=right style="border:0px;margin:0px;padding:0px">
+[h:delete=getMacroIndexes(listGet(lvl4, roll.count),",",GenericID)]
+[h:remove=if(listGet(lvl4, roll.count)=="","","X")]
+<font  style="text-decoration:none" color=red size=2>
+[r:macroLink( remove,"Remove Macros@Lib:Character","",delete,token.name)]
+</font>
+<tr>
+
+
+}]
+
+
+    </table></command>
+        <label>4th Level</label>
+        <group>Blocks: Spells</group>
+        <sortby></sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>75</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>71</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>b2949b97-529b-4b1d-a2c2-e6186c2bf8f0</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>71</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:GenericID=findToken(token.name)]
+[h:BasicMacros=getMacros(",",GenericID)]
+[h:BasicMacros=listSort(BasicMacros, "A")]
+[h:lvl5=""]
+
+
+[h,count(listCount(BasicMacros)),code:{
+  
+  [h:CurrentMacro=listGet(BasicMacros,roll.count)]
+  [h:CurrentMacroIndex=getMacroIndexes(CurrentMacro,",",GenericID)]
+  [h:CurrentMacroProps=getMacroProps(CurrentMacroIndex,",",GenericID)]
+  
+[h: group=getStrProp(CurrentMacroProps, "group","",",")]
+[h: label=getStrProp(CurrentMacroProps, "label","",",")]
+[h: CurrentFeatureName=if(group=="Spells: 5th Level",label,"")]
+[h: lvl5=listAppend(lvl5, CurrentFeatureName)]
+[h:empty=listFind(lvl5, "")]
+[r:lvl5=listDelete(lvl5, empty)]
+
+
+
+}]
+[h:lvl5=listDelete(lvl5, listFind(lvl5, "Slots lvl 5"))]
+
+<table style="border:1px solid silver;margin:2px"   bgcolor=white width=100%>
+
+
+
+<tr>
+    <td align=center colspan=4 style="border:0px;margin:0px;padding:0px">
+
+    
+<table border=1 width=100%>
+ <td width=30px>
+ 
+ <b>
+ <font  style="text-decoration:none"  size=2> 
+ 5  [r:macroLink( "[+]","Create Spell@Lib:Character","",5,token.name)]
+ </b>
+ <td align=center width=50px>
+
+ <font  style="text-decoration:none"  size=2>
+[r:macroLink( getProperty("Slots lvl 5 Total"),"Change Property@Lib:Character","","Slots lvl 5 Total",token.name)]
+
+ <td align=center>
+<font  style="text-decoration:none"  size=2><b>
+
+[r:macroLink( getProperty("Slots lvl 5"),"Slots lvl 5@Token","all","",token.name)]
+
+  
+</table>
+
+  <tr>
+
+
+
+
+
+
+
+[r,count(listCount(lvl5),""),code:{
+
+
+<td width=1% align=center style="border:0px;margin:0px;padding:0px">
+
+
+[h:prepared=if(getProperty(listGet(lvl5, roll.count)+"Prepared")==1,"X","O")]
+<font color=black  style="text-decoration:none" size=2>
+[r:macroLink(prepared,"Change Prepared@Lib:Character","self",listGet(lvl5, roll.count),findToken(token.name))]
+
+
+
+<td colspan=2 style="border:0px;margin:0px;padding:0px">
+<font color=gray face=serif style="text-decoration:none" size=2>
+[r:if(listGet(lvl5, roll.count)=="","",macroLink("<i>(i)</i>","share@Lib:Character","all",listGet(lvl5, roll.count),findToken(token.name)))]
+</font>
+<font  style="text-decoration:none" size=2>
+[r:macroLink(listGet(lvl5, roll.count),"popup@Lib:Character","",listGet(lvl5, roll.count),findToken(token.name))]
+</font>
+<font color=gray face=serif style="text-decoration:none" size=2>
+<td width=1% align=right style="border:0px;margin:0px;padding:0px">
+[h:delete=getMacroIndexes(listGet(lvl5, roll.count),",",GenericID)]
+[h:remove=if(listGet(lvl5, roll.count)=="","","X")]
+<font  style="text-decoration:none" color=red size=2>
+[r:macroLink( remove,"Remove Macros@Lib:Character","",delete,token.name)]
+</font>
+<tr>
+
+
+}]
+
+
+    </table></command>
+        <label>5th Level</label>
+        <group>Blocks: Spells</group>
+        <sortby></sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>75</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>72</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>d6871043-3e7e-40e0-aaed-2896946c4be4</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>72</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:GenericID=findToken(token.name)]
+[h:BasicMacros=getMacros(",",GenericID)]
+[h:BasicMacros=listSort(BasicMacros, "A")]
+[h:lvl6=""]
+
+
+[h,count(listCount(BasicMacros)),code:{
+  
+  [h:CurrentMacro=listGet(BasicMacros,roll.count)]
+  [h:CurrentMacroIndex=getMacroIndexes(CurrentMacro,",",GenericID)]
+  [h:CurrentMacroProps=getMacroProps(CurrentMacroIndex,",",GenericID)]
+  
+[h: group=getStrProp(CurrentMacroProps, "group","",",")]
+[h: label=getStrProp(CurrentMacroProps, "label","",",")]
+[h: CurrentFeatureName=if(group=="Spells: 6th Level",label,"")]
+[h: lvl6=listAppend(lvl6, CurrentFeatureName)]
+[h:empty=listFind(lvl6, "")]
+[r:lvl6=listDelete(lvl6, empty)]
+
+
+
+}]
+
+[h:lvl6=listDelete(lvl6, listFind(lvl6, "Slots lvl 6"))]
+<table style="border:1px solid silver;margin:2px"   bgcolor=white width=100%>
+
+
+
+<tr>
+    <td align=center colspan=4 style="border:0px;margin:0px;padding:0px">
+
+    
+<table border=1 width=100%>
+ <td width=30px>
+ 
+ <b>
+ <font  style="text-decoration:none"  size=2> 
+ 6  [r:macroLink( "[+]","Create Spell@Lib:Character","",6,token.name)]
+ </b>
+ <td align=center width=50px>
+
+ <font  style="text-decoration:none"  size=2>
+[r:macroLink( getProperty("Slots lvl 6 Total"),"Change Property@Lib:Character","","Slots lvl 6 Total",token.name)]
+
+ <td align=center>
+<font  style="text-decoration:none"  size=2><b>
+
+[r:macroLink( getProperty("Slots lvl 6"),"Slots lvl 6@Token","all","",token.name)]
+
+  
+</table>
+
+  <tr>
+
+
+
+
+
+
+
+[r,count(listCount(lvl6),""),code:{
+
+
+<td width=1% align=center style="border:0px;margin:0px;padding:0px">
+
+
+[h:prepared=if(getProperty(listGet(lvl6, roll.count)+"Prepared")==1,"X","O")]
+<font color=black  style="text-decoration:none" size=2>
+[r:macroLink(prepared,"Change Prepared@Lib:Character","self",listGet(lvl6, roll.count),findToken(token.name))]
+
+
+
+<td colspan=2 style="border:0px;margin:0px;padding:0px">
+<font color=gray face=serif style="text-decoration:none" size=2>
+[r:if(listGet(lvl6, roll.count)=="","",macroLink("<i>(i)</i>","share@Lib:Character","all",listGet(lvl6, roll.count),findToken(token.name)))]
+</font>
+<font  style="text-decoration:none" size=2>
+[r:macroLink(listGet(lvl6, roll.count),"popup@Lib:Character","",listGet(lvl6, roll.count),findToken(token.name))]
+</font>
+<font color=gray face=serif style="text-decoration:none" size=2>
+<td width=1% align=right style="border:0px;margin:0px;padding:0px">
+[h:delete=getMacroIndexes(listGet(lvl6, roll.count),",",GenericID)]
+[h:remove=if(listGet(lvl6, roll.count)=="","","X")]
+<font  style="text-decoration:none" color=red size=2>
+[r:macroLink( remove,"Remove Macros@Lib:Character","",delete,token.name)]
+</font>
+<tr>
+
+
+}]
+
+
+    </table></command>
+        <label>6th Level</label>
+        <group>Blocks: Spells</group>
+        <sortby></sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>75</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>73</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>3c2b0700-a4af-47cf-9ff3-d332a3e9e624</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>73</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:GenericID=findToken(token.name)]
+[h:BasicMacros=getMacros(",",GenericID)]
+[h:BasicMacros=listSort(BasicMacros, "A")]
+[h:lvl7=""]
+
+
+[h,count(listCount(BasicMacros)),code:{
+  
+  [h:CurrentMacro=listGet(BasicMacros,roll.count)]
+  [h:CurrentMacroIndex=getMacroIndexes(CurrentMacro,",",GenericID)]
+  [h:CurrentMacroProps=getMacroProps(CurrentMacroIndex,",",GenericID)]
+  
+[h: group=getStrProp(CurrentMacroProps, "group","",",")]
+[h: label=getStrProp(CurrentMacroProps, "label","",",")]
+[h: CurrentFeatureName=if(group=="Spells: 7th Level",label,"")]
+[h: lvl7=listAppend(lvl7, CurrentFeatureName)]
+[h:empty=listFind(lvl7, "")]
+[r:lvl7=listDelete(lvl7, empty)]
+
+
+
+}]
+[h:lvl7=listDelete(lvl7, listFind(lvl7, "Slots lvl 7"))]
+
+<table style="border:1px solid silver;margin:2px"   bgcolor=white width=100%>
+
+
+
+<tr>
+    <td align=center colspan=4 style="border:0px;margin:0px;padding:0px">
+
+    
+<table border=1 width=100%>
+ <td width=30px>
+ 
+ <b>
+ <font  style="text-decoration:none"  size=2> 
+ 7  [r:macroLink( "[+]","Create Spell@Lib:Character","",7,token.name)]
+ </b>
+ <td align=center width=50px>
+
+ <font  style="text-decoration:none"  size=2>
+[r:macroLink( getProperty("Slots lvl 7 Total"),"Change Property@Lib:Character","","Slots lvl 7 Total",token.name)]
+
+ <td align=center>
+<font  style="text-decoration:none"  size=2><b>
+
+[r:macroLink( getProperty("Slots lvl 7"),"Slots lvl 7@Token","all","",token.name)]
+
+  
+</table>
+
+  <tr>
+
+
+
+
+
+
+
+[r,count(listCount(lvl7),""),code:{
+
+
+<td width=1% align=center style="border:0px;margin:0px;padding:0px">
+
+
+[h:prepared=if(getProperty(listGet(lvl7, roll.count)+"Prepared")==1,"X","O")]
+<font color=black  style="text-decoration:none" size=2>
+[r:macroLink(prepared,"Change Prepared@Lib:Character","self",listGet(lvl7, roll.count),findToken(token.name))]
+
+
+
+<td colspan=2 style="border:0px;margin:0px;padding:0px">
+<font color=gray face=serif style="text-decoration:none" size=2>
+[r:if(listGet(lvl7, roll.count)=="","",macroLink("<i>(i)</i>","share@Lib:Character","all",listGet(lvl7, roll.count),findToken(token.name)))]
+</font>
+<font  style="text-decoration:none" size=2>
+[r:macroLink(listGet(lvl7, roll.count),"popup@Lib:Character","",listGet(lvl7, roll.count),findToken(token.name))]
+</font>
+<font color=gray face=serif style="text-decoration:none" size=2>
+<td width=1% align=right style="border:0px;margin:0px;padding:0px">
+[h:delete=getMacroIndexes(listGet(lvl7, roll.count),",",GenericID)]
+[h:remove=if(listGet(lvl7, roll.count)=="","","X")]
+<font  style="text-decoration:none" color=red size=2>
+[r:macroLink( remove,"Remove Macros@Lib:Character","",delete,token.name)]
+</font>
+<tr>
+
+
+}]
+
+
+    </table></command>
+        <label>7th Level</label>
+        <group>Blocks: Spells</group>
+        <sortby></sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>75</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>74</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>dfdffbc7-45e2-438c-8990-1856a8a70c47</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>74</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:GenericID=findToken(token.name)]
+[h:BasicMacros=getMacros(",",GenericID)]
+[h:BasicMacros=listSort(BasicMacros, "A")]
+[h:lvl8=""]
+
+
+[h,count(listCount(BasicMacros)),code:{
+  
+  [h:CurrentMacro=listGet(BasicMacros,roll.count)]
+  [h:CurrentMacroIndex=getMacroIndexes(CurrentMacro,",",GenericID)]
+  [h:CurrentMacroProps=getMacroProps(CurrentMacroIndex,",",GenericID)]
+  
+[h: group=getStrProp(CurrentMacroProps, "group","",",")]
+[h: label=getStrProp(CurrentMacroProps, "label","",",")]
+[h: CurrentFeatureName=if(group=="Spells: 8th Level",label,"")]
+[h: lvl8=listAppend(lvl8, CurrentFeatureName)]
+[h:empty=listFind(lvl8, "")]
+[r:lvl8=listDelete(lvl8, empty)]
+
+
+
+}]
+[h:lvl8=listDelete(lvl8, listFind(lvl8, "Slots lvl 8"))]
+
+<table style="border:1px solid silver;margin:2px"   bgcolor=white width=100%>
+
+
+
+<tr>
+    <td align=center colspan=4 style="border:0px;margin:0px;padding:0px">
+
+    
+<table border=1 width=100%>
+ <td width=30px>
+ 
+ <b>
+ <font  style="text-decoration:none"  size=2> 
+ 8  [r:macroLink( "[+]","Create Spell@Lib:Character","",8,token.name)]
+ </b>
+ <td align=center width=50px>
+
+ <font  style="text-decoration:none"  size=2>
+[r:macroLink( getProperty("Slots lvl 8 Total"),"Change Property@Lib:Character","","Slots lvl 8 Total",token.name)]
+
+ <td align=center>
+<font  style="text-decoration:none"  size=2><b>
+
+[r:macroLink( getProperty("Slots lvl 8"),"Slots lvl 8@Token","all","",token.name)]
+
+  
+</table>
+
+  <tr>
+
+
+
+
+
+
+
+[r,count(listCount(lvl8),""),code:{
+
+
+<td width=1% align=center style="border:0px;margin:0px;padding:0px">
+
+
+[h:prepared=if(getProperty(listGet(lvl8, roll.count)+"Prepared")==1,"X","O")]
+<font color=black  style="text-decoration:none" size=2>
+[r:macroLink(prepared,"Change Prepared@Lib:Character","self",listGet(lvl8, roll.count),findToken(token.name))]
+
+
+
+<td colspan=2 style="border:0px;margin:0px;padding:0px">
+<font color=gray face=serif style="text-decoration:none" size=2>
+[r:if(listGet(lvl8, roll.count)=="","",macroLink("<i>(i)</i>","share@Lib:Character","all",listGet(lvl8, roll.count),findToken(token.name)))]
+</font>
+<font  style="text-decoration:none" size=2>
+[r:macroLink(listGet(lvl8, roll.count),"popup@Lib:Character","",listGet(lvl8, roll.count),findToken(token.name))]
+</font>
+<font color=gray face=serif style="text-decoration:none" size=2>
+<td width=1% align=right style="border:0px;margin:0px;padding:0px">
+[h:delete=getMacroIndexes(listGet(lvl8, roll.count),",",GenericID)]
+[h:remove=if(listGet(lvl8, roll.count)=="","","X")]
+<font  style="text-decoration:none" color=red size=2>
+[r:macroLink( remove,"Remove Macros@Lib:Character","",delete,token.name)]
+</font>
+<tr>
+
+
+}]
+
+
+    </table></command>
+        <label>8th Level</label>
+        <group>Blocks: Spells</group>
+        <sortby></sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>75</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>75</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <macroUUID>784fbb5f-ebdf-4fa6-b7ff-803e63a219a6</macroUUID>
+        <saveLocation>Token</saveLocation>
+        <index>75</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:GenericID=findToken(token.name)]
+[h:BasicMacros=getMacros(",",GenericID)]
+[h:BasicMacros=listSort(BasicMacros, "A")]
+[h:lvl9=""]
+
+
+[h,count(listCount(BasicMacros)),code:{
+  
+  [h:CurrentMacro=listGet(BasicMacros,roll.count)]
+  [h:CurrentMacroIndex=getMacroIndexes(CurrentMacro,",",GenericID)]
+  [h:CurrentMacroProps=getMacroProps(CurrentMacroIndex,",",GenericID)]
+  
+[h: group=getStrProp(CurrentMacroProps, "group","",",")]
+[h: label=getStrProp(CurrentMacroProps, "label","",",")]
+[h: CurrentFeatureName=if(group=="Spells: 9th Level",label,"")]
+[h: lvl9=listAppend(lvl9, CurrentFeatureName)]
+[h:empty=listFind(lvl9, "")]
+[r:lvl9=listDelete(lvl9, empty)]
+
+
+
+}]
+[h:lvl9=listDelete(lvl9, listFind(lvl9, "Slots lvl 9"))]
+
+<table style="border:1px solid silver;margin:2px"   bgcolor=white width=100%>
+
+
+
+<tr>
+    <td align=center colspan=4 style="border:0px;margin:0px;padding:0px">
+
+    
+<table border=1 width=100%>
+ <td width=30px>
+ 
+ <b>
+ <font  style="text-decoration:none"  size=2> 
+ 9 [r:macroLink( "[+]","Create Spell@Lib:Character","",9,token.name)]
+ </b>
+ <td align=center width=50px>
+
+ <font  style="text-decoration:none"  size=2>
+[r:macroLink( getProperty("Slots lvl 9 Total"),"Change Property@Lib:Character","","Slots lvl 9 Total",token.name)]
+
+ <td align=center>
+<font  style="text-decoration:none"  size=2><b>
+
+[r:macroLink( getProperty("Slots lvl 9"),"Slots lvl 9@Token","all","",token.name)]
+
+  
+</table>
+
+  <tr>
+
+
+
+
+
+
+
+[r,count(listCount(lvl9),""),code:{
+
+
+<td width=1% align=center style="border:0px;margin:0px;padding:0px">
+
+[h:prepared=if(getProperty(listGet(lvl9, roll.count)+"Prepared")==1,"X","O")]
+<font color=black  style="text-decoration:none" size=2>
+[r:macroLink(prepared,"Change Prepared@Lib:Character","self",listGet(lvl9, roll.count),findToken(token.name))]
+
+
+
+<td colspan=2 style="border:0px;margin:0px;padding:0px">
+<font color=gray face=serif style="text-decoration:none" size=2>
+[r:if(listGet(lvl9, roll.count)=="","",macroLink("<i>(i)</i>","share@Lib:Character","all",listGet(lvl9, roll.count),findToken(token.name)))]
+</font>
+<font  style="text-decoration:none" size=2>
+[r:macroLink(listGet(lvl9, roll.count),"popup@Lib:Character","",listGet(lvl9, roll.count),findToken(token.name))]
+</font>
+<font color=gray face=serif style="text-decoration:none" size=2>
+<td width=1% align=right style="border:0px;margin:0px;padding:0px">
+[h:delete=getMacroIndexes(listGet(lvl9, roll.count),",",GenericID)]
+[h:remove=if(listGet(lvl9, roll.count)=="","","X")]
+<font  style="text-decoration:none" color=red size=2>
+[r:macroLink( remove,"Remove Macros@Lib:Character","",delete,token.name)]
+</font>
+<tr>
+
+
+}]
+
+
+    </table></command>
+        <label>9th Level</label>
+        <group>Blocks: Spells</group>
+        <sortby></sortby>
+        <autoExecute>false</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>75</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <displayHotKey>true</displayHotKey>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>

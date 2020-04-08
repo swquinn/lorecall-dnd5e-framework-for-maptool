@@ -1,0 +1,20 @@
+[h:tokenId=currentToken()]
+
+[h:view=macro.args]
+[h:callback="AttacksEditor@"+getMacroLocation()]
+[if(view=="NewAttackForm"), CODE: {
+  [h:newAttacksClass="active"]
+  [h:browseAttacksClass=""]
+}; {
+  [h:newAttacksClass=""]
+  [h:browseAttacksClass="active"]
+}]
+
+[h:newAttacks=macroLinkText(callback, "none", "view=NewAttackForm", tokenId)]
+[h:browsAttacks=macroLinkText(callback, "none", "view=BrowseAttacks", tokenId)]
+<header>
+  <nav>
+    <a class="[r:newAttacksClass]" href="[r:newAttacks]">New Attacks</a>
+    <a class="[r:browseAttacksClass]" href="[r:browsAttacks]">Browse Attacks</a>
+  </nav>
+</header>

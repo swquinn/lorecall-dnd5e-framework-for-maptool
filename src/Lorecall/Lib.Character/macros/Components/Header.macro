@@ -1,0 +1,22 @@
+[h:tokenId=currentToken()]
+[h:refreshAction=macroLinkText("Character@TOKEN","","",tokenId)]
+
+<header>
+  <h1>
+    <span>
+      <a href="[r:refreshAction]">
+        <i class="icon">[r:icons.sync()]</i>
+      </a>
+    </span>
+    DUNGEONS & DRAGONS (SRD5)
+  </h1>
+  <nav>
+    <span class="header-tab active">FRONT</span>
+    <span class="header-tab hidden">DETAILS</span>
+    <span class="header-tab hidden">SPELLS</span>
+    <span class="header-tab hidden">
+      <i class="icon">[r:icons.cog()]</i>
+    </span>
+    <span class="header-tab hidden">[r:macroLink("[Export]","ExportJson@Lib:Character","","",tokenId)]</span>
+  </nav>
+</header>

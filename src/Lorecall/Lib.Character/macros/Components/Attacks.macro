@@ -1,0 +1,70 @@
+[h:tokenId=currentToken()]
+[h:attacks=getProperty("Attacks")]
+
+<section class="cs-attacks">
+  <div class="attacks">
+    <table>
+      <colgroup>
+        <col class="name-column">
+        <col class="attack-mod-column">
+        <col class="damage-column">
+        <col class="action-column">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>ATK</th>
+          <th>DAMAGE/TYPE</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      [foreach(attackId, attacks, "", ""), CODE: {
+        [h:attack=json.get(attacks, attackId)]
+        [h:attackName=json.get(attack, "name")]
+        [h:attackType=json.get(attack, "type")]
+        [h:attackModifier=json.get(attack, "modifier")]
+        [h:attackDamage=json.get(attack, "primaryDamage")]
+        [h:attackDamageType=json.get(attack, "primaryDamageType")]
+
+        [h:attackArgs=""]
+        [h:attackArgs=setStrProp(attackArgs, "attackId", attackId)]
+        [h:attackArgs=setStrProp(attackArgs, "tokenId", tokenId)]
+        [h:attackAction=macroLinkText("RollAttack@Lib:Character", "all", attackArgs, tokenId)]
+
+        [h:editArgs=""]
+        [h:editArgs=setStrProp(editArgs, "attackId", attackId)]
+        [h:editArgs=setStrProp(editArgs, "attackName", json.get(attack, "name"))]
+        [h:editAction=macroLinkText("AttackEditor@this", "none", editArgs, tokenId)]
+        <tr>
+          <td class="name-column">
+            <a class="attack-label" title="[r:attackName]" href="[r:attackAction]">[r:attackName]</a>
+          </td>
+          <td class="attack-mod-column">
+            [if(attackType=="Saving Throw"), CODE: {
+              [h:attackSavingThrowDC=json.get(attack, "savingThrowDC")]
+              <span>DC [r:attackSavingThrowDC]</span>
+            }; {
+              <span>[r:attackModifier]</span>
+            }]
+          </td>
+          <td class="damage-column">
+            <span title='[r:strformat("%{attackDamage} %{attackDamageType}")]'>
+              <span>[r:attackDamage]</span>
+              <span>[r:attackDamageType]</span>
+            </span>
+          </td>
+          <td class="action-column">
+            <a class="action" href="[r:editAction]">
+              <i class="icon">[r:icons.edit()]</i>
+            </a>
+          </td>
+        </tr>
+      }]
+      </tbody>
+    </table>
+  </div>
+  <label>
+    [r:macroLink("ATTACKS", "AttacksEditor@this", "","",tokenId)]
+  </label>
+</section>

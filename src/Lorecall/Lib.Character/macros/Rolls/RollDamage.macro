@@ -1,0 +1,68 @@
+[h:attackId=macro.args]
+
+[h:attacks=getProperty("Attacks", currentToken())]
+[h:attack=json.get(attacks, attackId)]
+[s,if(json.isEmpty(attack)), CODE: {
+  Unable to find attack with ID: [r:attackId]
+  [abort(0)]
+};{}]
+
+<!-- Before rolling anything, clear the rolls. -->
+[h:clearRolls()]
+
+<!-- styles -->
+[h:color = "#660000"]
+[h:rollTableStyle=strformat("border:1px solid %{color}; width: 180px;")]
+[h:attackIdentifierStyle=strformat("padding: 0px 2px; background-color: %{color}; color: #ffffff")]
+[h:marginPaddingResetStyle="margin: auto; padding: 0px;"]
+
+
+[h:attackName=json.get(attack, "name")]
+<table style="[r:rollTableStyle]">
+
+  <!-- Primary attack damage -->
+  [h:primaryDamage=json.get(attack, "primaryDamage")]
+  [h:primaryDamageType=json.get(attack, "primaryDamageType")]
+  [h:primaryDamageRolled=eval(primaryDamage)]
+  <tr class="vertical-align: middle;">
+    <td colspan="2" style="text-align: center;">
+      <div style="[r:marginPaddingResetStyle]">
+        <strong style="color: #333333; font-size: 24pt;">[r:primaryDamageRolled]</strong>
+      </div>
+      <div style="font-size: 9pt; [r:marginPaddingResetStyle]">
+         ([r:primaryDamage]; [r:getRolled()])
+      </div>
+      <div style="[r:marginPaddingResetStyle] padding-bottom: 5px;">
+        <em>[r:primaryDamageType] damage</em>
+      </div>
+    </td>
+  </tr>
+  [h:clearRolls()]
+
+  <!-- Secondary attack damage -->
+  [h:secondaryDamage=json.get(attack, "secondaryDamage")]
+  [if(secondaryDamage!=""), CODE: {
+    [h:secondaryDamageType=json.get(attack, "secondaryDamageType")]
+    [h:secondaryDamageRolled=eval(secondaryDamage)]
+    <tr class="vertical-align: middle;">
+      <td colspan="2" style="text-align: center;">
+        <div style="[r:marginPaddingResetStyle]">
+          <strong style="color: #333333; font-size: 24pt;">[r:secondaryDamageRolled]</strong>
+        </div>
+        <div style="font-size: 9pt; [r:marginPaddingResetStyle]">
+          ([r:secondaryDamage]; [r:getRolled()])
+        </div>
+        <div style="[r:marginPaddingResetStyle] padding-bottom: 5px;">
+          <em>[r:secondaryDamageType] damage</em>
+        </div>
+      </td>
+    </tr>
+    [h:clearRolls()]
+  };{}]
+
+  <tr>
+    <td colspan="2" style="text-align: center; [r:attackIdentifierStyle]">
+      <strong>[r:attackName] (Damage)</strong>
+    </td>
+  </tr>
+</table>

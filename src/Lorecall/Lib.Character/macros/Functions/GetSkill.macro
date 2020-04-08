@@ -1,0 +1,12 @@
+[h:skill=arg(0)]
+[h:skills=getProperty("Skills")]
+
+[h:theSkill=json.set("{}",
+  "skill", skill,
+  "proficiency", "NOT_PROFICIENT"
+)]
+[if(json.length(skills)>0), CODE: {
+  [h:item=json.get(skills, skill)]
+  [h:theSkill=if(json.isEmpty(item), theSkill, item)]
+};{}]
+[h:macro.return=theSkill]

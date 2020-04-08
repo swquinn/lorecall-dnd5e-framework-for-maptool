@@ -1,0 +1,20 @@
+[h:savingThrow=arg(0)]
+
+[h:ability=json.get(savingThrow, "ability")]
+[h:proficiencyBonus=character.getProficiencyBonus()]
+
+[h:abilityScore=getProperty(ability)]
+[h:abilityScoreModifier=character.getAbilityScoreModifier(abilityScore)]
+
+[h:totalModifier=abilityScoreModifier]
+
+[h:savingThrowProficiency=json.get(savingThrow, "proficiency")]
+[if(savingThrowProficiency=="PROFICIENT"), CODE: {
+  [h:totalModifier=add(totalModifier, proficiencyBonus)]
+};{}]
+
+[if(savingThrowProficiency=="EXPERT"), CODE: {
+  [h:totalModifier=add(totalModifier, (proficiencyBonus * 2))]
+};{}]
+
+[h:macro.return=totalModifier]

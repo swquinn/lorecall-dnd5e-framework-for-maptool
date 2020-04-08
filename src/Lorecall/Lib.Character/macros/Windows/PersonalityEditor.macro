@@ -1,0 +1,57 @@
+[h:personality=getProperty("Personality")]
+
+[if(json.length(personality) < 1), CODE: {
+  [h:personality=json.set("{}",
+    "traits", "",
+    "ideals", "",
+    "bonds", "",
+    "flaws", ""
+  )]
+  [h:setProperty("Personality", personality)]
+};{}]
+
+[h:tokenId=currentToken()]
+[h:traits=string(json.get(personality, "traits"))]
+[h:ideals=string(json.get(personality, "ideals"))]
+[h:bonds=string(json.get(personality, "bonds"))]
+[h:flaws=string(json.get(personality, "flaws"))]
+
+[h:title=strformat("Edit Personality - %{token.name}")]
+[h:submitAction=macroLinkText("UpdatePersonality@Lib:Character", "none")]
+[h:cancelAction=macroLinkText("CancelDialog@Lib:Module", "none", title)]
+[dialog5(title, "width=350; height=480; temporary=1; input=1; closebutton=0; noframe=0"): {
+<html>
+  <head>
+    <link rel="stylesheet" href="lorecall.css@[r: getMacroLocation()]" type="text/css">
+    <title>[r:title]</title>
+  </head>
+  <body class="property-editor">
+    <form action="[r:submitAction]">
+      <input id="status" type="hidden" name="status" value="1">
+      <input type="hidden" name="tokenId" value="[r:tokenId]">
+      <div>
+        <label>Personality Trait</label>
+        <textarea name="traits">[r:traits]</textarea>
+      </div>
+
+      <div>
+        <label>Ideals</label>
+        <textarea name="ideals">[r:ideals]</textarea>
+      </div>
+
+      <div>
+        <label>Bonds</label>
+        <textarea name="bonds">[r:bonds]</textarea>
+      </div>
+
+      <div>
+        <label>Flaws</label>
+        <textarea name="flaws">[r:flaws]</textarea>
+      </div>
+      <hr/>
+      <input type="submit" value="Save">
+      <a class="btn" href="[r:cancelAction]">Cancel</a>
+    </form>
+  </body>
+</html>
+}]

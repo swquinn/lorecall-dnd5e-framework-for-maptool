@@ -1,0 +1,26 @@
+[h:jsonData=macro.args]
+
+[h:attackId=json.get(jsonData, "attackId")]
+[h:attackName=json.get(jsonData, "name")]
+[assert(attackName!="", "Attack MUST have a name.")]
+
+[h:tokenId=json.get(jsonData, "tokenId")]
+[h:jsonData=json.remove(jsonData, "tokenId")]
+
+[h:attacks=getProperty("Attacks", tokenId)]
+[h:attackCount=json.length(attacks)]
+
+[if(attackCount < 1), CODE: {
+  [h:attacks='{}']
+  [h:setProperty("Attacks", attacks, tokenId)]
+};{}]
+
+[if(attackId==""), CODE: {
+  [h:attackId=base64.encode(strformat("%{tokenId}:" + (attackCount + 1) + ":%{attackName}"))]  
+};{}]
+
+[h:attackJson=jsonData]
+[h:attackJson=json.remove(attackJson, "attackId")]
+[h:attackJson=json.set(attackJson, "id", attackId)]
+[h:attacks=json.set(attacks, attackId, attackJson)]
+[h:setProperty("Attacks", attacks, tokenId)]

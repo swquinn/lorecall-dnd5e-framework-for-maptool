@@ -1,0 +1,5 @@
+[h:proficiencyBonus=character.getProficiencyBonus()]
+<section class="cs-proficiency-bonus">
+  [r:proficiencyBonus]
+  <span>PROFICIENCY BONUS</span>
+</section>

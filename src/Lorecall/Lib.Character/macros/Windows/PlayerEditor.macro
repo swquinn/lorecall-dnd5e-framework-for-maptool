@@ -1,0 +1,18 @@
+[h:players=getAllPlayerNames(",")]
+[h:playerOptions=strformat("All Players,%{players},GM")]
+[h:selectField=strformat("player|%{playerOptions}|Owned By|List|value=string")]
+[h:abort(input(selectField))]
+
+[h,if(player=="All Players"), CODE:{
+  [h:setOwnedByAll(1)]
+};{}]
+
+[h,if(player=="GM"), CODE:{
+  [h:setOwnedByAll(0)]
+};{}]
+
+[h,if(player != "All Players" && player != "GM"), CODE:{
+  [h:setOwner(player)]
+};{}]
+
+[macro("Refresh@this"): token.name]

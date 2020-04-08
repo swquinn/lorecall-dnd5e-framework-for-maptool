@@ -1,0 +1,20 @@
+[h:tokenId=currentToken()]
+
+[h:view=macro.args]
+[h:callback="FeaturesEditor@"+getMacroLocation()]
+[if(view=="NewFeatureForm"), CODE: {
+  [h:newFeaturesClass="active"]
+  [h:browseFeaturesClass=""]
+}; {
+  [h:newFeaturesClass=""]
+  [h:browseFeaturesClass="active"]
+}]
+
+[h:newFeatures=macroLinkText(callback, "none", "view=NewFeatureForm", tokenId)]
+[h:browsFeatures=macroLinkText(callback, "none", "view=BrowseFeatures", tokenId)]
+<header>
+  <nav>
+    <a class="[r:newFeaturesClass]" href="[r:newFeatures]">New Features</a>
+    <a class="[r:browseFeaturesClass]" href="[r:browsFeatures]">Browse Features</a>
+  </nav>
+</header>

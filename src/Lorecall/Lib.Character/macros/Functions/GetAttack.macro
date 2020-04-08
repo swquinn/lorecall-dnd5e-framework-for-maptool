@@ -1,0 +1,25 @@
+[h:attackId=arg(0)]
+[h:attacks=getProperty("Attacks")]
+
+[h:theAttack=json.set("{}",
+  "id", "",
+  "name", "",
+  "type", "",
+  "modifier", 0,
+  "critical", 20,
+  "isProficient", "off",
+  "range", "",
+  "primaryDamage", "",
+  "primaryDamageType", 0,
+  "secondaryDamage", "",
+  "secondaryDamageType", "",
+  "savingThrow", "",
+  "savingThrowDC", "",
+  "description", ""
+)]
+[h:log.info("theAttacl ===" + theAttack)]
+[if(json.length(attacks)>0), CODE: {
+  [h:item=json.get(attacks, attackId)]
+  [h:theAttack=if(json.isEmpty(item), theAttack, item)]
+};{}]
+[h:macro.return=theAttack]

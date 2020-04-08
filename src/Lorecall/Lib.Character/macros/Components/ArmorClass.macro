@@ -1,0 +1,13 @@
+[h:ac=getProperty("ArmorClass")]
+
+[h:editLink=macroLinkText("SimplePropertyEditor@Lib:Character", "none", "ArmorClass", currentToken())]
+<section class="cs-armor-class">
+  <div class="clearfix">
+    <a href="[r:editLink]" class="edit-ac">
+      <i class="icon">[r:icons.edit()]</i>
+    </a>
+  </div>
+
+  <span class="token-property">[r:ac]</span>
+  <label>AC</label>
+</section>

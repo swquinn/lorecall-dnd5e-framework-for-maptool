@@ -1,0 +1,23 @@
+[h:value = getStrProp(macro.args, "value")]
+[h:skill = getStrProp(macro.args, "skill")]
+[h:firstRoll = 1d20]
+[h:secondRoll = 1d20]
+
+<table style="border:1px solid #ff9900; width: 170px;">
+  <tr>
+    <td colspan="2" style="background-color:#ff9900; color: #ffffff">
+      <strong>[r: skill] Save: </strong>([r: firstRoll+"/"+secondRoll]) [r:if(value<0,value,"+"+value)]
+    </td>
+  </tr>
+  <tr class="vertical-align: middle;">
+    <td style="margin: 5px 0px; text-align: center;">
+      <span style="color: #ff9900; font-size: 24pt;"><strong>[r: firstRoll+value]</strong></span>
+    </td>
+    <td style="margin: 7px 0px 3px;">
+      <div style="color: #999999; font-size: 10pt;">
+        <span>[r: "Adv: "+if(firstRoll >= secondRoll,firstRoll+value,secondRoll+value)]</span><br/>
+        <span style="color: #999999;" font-size: 10pt;>[r: "Dis: "+if(firstRoll >= secondRoll,secondRoll+value,firstRoll+value)]</span>
+      </div>
+    </td>
+  </tr>
+</table>
